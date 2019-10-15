@@ -1,5 +1,5 @@
 view: issue_priority_history {
-  sql_table_name: jira_for_looker.ISSUE_PRIORITY_HISTORY ;;
+  sql_table_name: jira_for_looker.issue_priority_history ;;
 
   dimension: _fivetran_synced {
     type: string

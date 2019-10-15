@@ -1,6 +1,6 @@
   view: issue_type {
 
-    sql_table_name: jira_for_looker.ISSUE_TYPE ;;
+    sql_table_name: jira_for_looker.issue_type ;;
 
     dimension: id {
       primary_key: yes

@@ -1,5 +1,5 @@
   view: issue_sub_tasks {
-    sql_table_name: jira_for_looker.ISSUE_SUB_TASKS ;;
+    sql_table_name: jira_for_looker.issue_sub_tasks ;;
 
     dimension_group: _fivetran_synced {
       type: time

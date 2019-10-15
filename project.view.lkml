@@ -1,5 +1,5 @@
   view: project {
-    sql_table_name: jira_for_looker.PROJECT ;;
+    sql_table_name: jira_for_looker.project ;;
 
     dimension: id {
       primary_key: yes

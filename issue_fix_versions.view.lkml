@@ -1,5 +1,5 @@
-view: issue_fix_version {
-  sql_table_name: jira_for_looker.ISSUE_FIX_VERSION ;;
+view: issue_fix_versions {
+  sql_table_name: jira_for_looker.issue_fix_versions ;;
 
   dimension: _fivetran_synced {
     type: string

@@ -1,5 +1,5 @@
 view: fivetran_audit {
-  sql_table_name: jira_for_looker.FIVETRAN_AUDIT ;;
+  sql_table_name: jira_for_looker.fivetran_audit ;;
 
   dimension: id {
     primary_key: yes

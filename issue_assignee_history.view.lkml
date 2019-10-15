@@ -1,5 +1,5 @@
 view: issue_assignee_history {
-  sql_table_name: jira_for_looker.ISSUE_ASSIGNEE_HISTORY ;;
+  sql_table_name: jira_for_looker.issue_assignee_history ;;
 
   dimension: _fivetran_synced {
     type: string

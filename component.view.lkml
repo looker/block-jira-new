@@ -1,5 +1,5 @@
   view: component {
-    sql_table_name: jira_for_looker.COMPONENT ;;
+    sql_table_name: jira_for_looker.component ;;
 
     dimension: id {
       primary_key: yes

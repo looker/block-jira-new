@@ -1,5 +1,5 @@
 view: issue_epic_link_history {
-  sql_table_name: jira_for_looker.ISSUE_EPIC_LINK_HISTORY ;;
+  sql_table_name: jira_for_looker.issue_epic_link ;;
 
   dimension: _fivetran_synced {
     type: string

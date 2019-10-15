@@ -1,5 +1,5 @@
   view: version {
-    sql_table_name: jira_for_looker.VERSION ;;
+    sql_table_name: jira_for_looker.version ;;
 
     dimension: id {
       primary_key: yes

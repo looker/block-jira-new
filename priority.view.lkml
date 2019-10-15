@@ -1,5 +1,5 @@
   view: priority {
-    sql_table_name: jira_for_looker.PRIORITY ;;
+    sql_table_name: jira_for_looker.priority ;;
 
     dimension: id {
       primary_key: yes

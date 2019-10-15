@@ -1,5 +1,5 @@
       view: field_option {
-        sql_table_name: jira_for_looker.FIELD_OPTION ;;
+        sql_table_name: jira_for_looker.field_option ;;
 
         dimension: id {
           primary_key: yes

@@ -1,5 +1,5 @@
 view: issue_link {
-  sql_table_name: jira_for_looker.ISSUE_LINK ;;
+  sql_table_name: jira_for_looker.issue_link ;;
 
   dimension: _fivetran_synced {
     type: string

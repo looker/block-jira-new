@@ -1,5 +1,5 @@
   view: status {
-    sql_table_name: jira_for_looker.STATUS ;;
+    sql_table_name: jira_for_looker.status ;;
 
     dimension: id {
       primary_key: yes

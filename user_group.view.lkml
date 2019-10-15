@@ -1,5 +1,5 @@
   view: user_group {
-    sql_table_name: jira_for_looker.USER_GROUP ;;
+    sql_table_name: jira_for_looker.user_group ;;
 
     dimension_group: _fivetran_synced {
       type: time
