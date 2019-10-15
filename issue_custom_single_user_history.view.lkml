@@ -1,5 +1,5 @@
 view: issue_custom_single_user_history {
-  sql_table_name: JIRA.ISSUE_CUSTOM_SINGLE_USER_HISTORY ;;
+  sql_table_name: jira_for_looker.ISSUE_CUSTOM_SINGLE_USER_HISTORY ;;
 
   dimension: _fivetran_synced {
     type: string

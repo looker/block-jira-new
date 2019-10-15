@@ -1,5 +1,5 @@
 view: issue_department_history {
-  sql_table_name: jira.issue_department_history ;;
+  sql_table_name: jira_for_looker.issue_department_history ;;
 
   dimension_group: _fivetran_synced {
     type: time

@@ -1,5 +1,5 @@
   view: status_category {
-    sql_table_name: JIRA.STATUS_CATEGORY ;;
+    sql_table_name: jira_for_looker.STATUS_CATEGORY ;;
 
     dimension: id {
       primary_key: yes

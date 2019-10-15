@@ -17,17 +17,17 @@ derived_table: {
         + p10.n * POWER(2,10)
         as number
       FROM
-        (SELECT 0 as n UNION SELECT 1) p0,
-        (SELECT 0 as n UNION SELECT 1) p1,
-        (SELECT 0 as n UNION SELECT 1) p2,
-        (SELECT 0 as n UNION SELECT 1) p3,
-        (SELECT 0 as n UNION SELECT 1) p4,
-        (SELECT 0 as n UNION SELECT 1) p5,
-        (SELECT 0 as n UNION SELECT 1) p6,
-        (SELECT 0 as n UNION SELECT 1) p7,
-        (SELECT 0 as n UNION SELECT 1) p8,
-        (SELECT 0 as n UNION SELECT 1) p9,
-        (SELECT 0 as n UNION SELECT 1) p10
+        (SELECT 0 as n UNION ALL SELECT 1) p0,
+        (SELECT 0 as n UNION ALL SELECT 1) p1,
+        (SELECT 0 as n UNION ALL SELECT 1) p2,
+        (SELECT 0 as n UNION ALL SELECT 1) p3,
+        (SELECT 0 as n UNION ALL SELECT 1) p4,
+        (SELECT 0 as n UNION ALL SELECT 1) p5,
+        (SELECT 0 as n UNION ALL SELECT 1) p6,
+        (SELECT 0 as n UNION ALL SELECT 1) p7,
+        (SELECT 0 as n UNION ALL SELECT 1) p8,
+        (SELECT 0 as n UNION ALL SELECT 1) p9,
+        (SELECT 0 as n UNION ALL SELECT 1) p10
 
  ;;
   indexes: ["number"]

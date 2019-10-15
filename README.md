@@ -46,12 +46,12 @@ The fields in the issue table will need to be updated to match your own issue ta
 * (2) Looker view files will need to be removed that are associated with Multi-Select Fields that are not included in your installation.  These tables have the naming convention `issue_<field_name>`
 * (3) Looker view files that are associated with history tables associated with both Single Select Fields and Multi Select Fields that are not included in your installation will need to be removed.  These tables have the naming convention `issue_<field_name>_history`.
 * (4) Additional View Files will need to be added for the additional fields and history tables included in your installation.  Adding these additional view files is a simple process.  While in Development Mode, select “Create View From Table” from the “Add Files” menu.  Select the correct connection and schema, and then add select each of that tables that do not already appear in your current list of view files.  Looker will automatically generate the view files for each additional table.
-* (5) Modify the Looker view file `issue_history_all` to remove any of the `UNION`s defined for tables that are not part of your installation.
-* (6) Modify the Looker view file `issue_history_all` to add any new `UNION`s required for history tables that are not currently included.
+* (5) Modify the Looker view file `issue_history_all` to remove any of the `UNION ALL`s defined for tables that are not part of your installation.
+* (6) Modify the Looker view file `issue_history_all` to add any new `UNION ALL`s required for history tables that are not currently included.
 
 #### Notes for updating #5 and #6 above:
 
-When adding new tables to the `UNION` in `issue_history_all`, there are two different forms that the new UNIONed table can take -
+When adding new tables to the `UNION ALL` in `issue_history_all`, there are two different forms that the new UNION ALLed table can take -
 * (1)  A history table for a standard field.  This is a field that is included as part of the default Jira schema.  These history tables can be identified by examining the table definition.  History tables for standard fields will contain a column named value, which will contain the actual text representation of the value.  For example, in the table `issue_browser_history`, which stores the history for a standard field, the value column contains entries such as Chrome, Safari and Firefox.
 * (2)  A history table for a custom field.  This is a field that was added by the Jira administrator and is not part of the default Jira schema.  These history tables can also be identified by examining the table definition.  History tables for custom fields will contain a column named `field_option_id`.  This field contains a numeric value, which is actually a foreign key to the table `field_option`, which contains the domain of allowable values for each custom field.
 
@@ -68,4 +68,3 @@ LEFT OUTER JOIN jira.field_option fo on erh.field_option_id = fo.id
 ### What if I find an error? Suggestions for improvements?
 
 Great! Blocks were designed for continuous improvement through the help of the entire Looker community, and we'd love your input. To log an error or improvement recommentation, simply create a "New Issue" in the corresponding [Github repo for this Block](https://github.com/llooker/jira_block_fivetran/issues). Please be as detailed as possible in your explanation, and we'll address it as quick as we can.
-

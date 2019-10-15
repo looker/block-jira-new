@@ -4,10 +4,10 @@ view: sprint_start_points {
 #   existing issue could be assigned to this sprint after the first day
   derived_table: {
     sql: SELECT sprint.id, sprint.name, sum(issue.story_points) as start_points
-      FROM jira.sprint AS sprint
-      JOIN jira.issue_sprint AS issue_sprint
+      FROM jira_for_looker.sprint AS sprint
+      JOIN jira_for_looker.issue_sprint AS issue_sprint
          ON sprint.id = issue_sprint.sprint_id
-      JOIN jira.issue AS issue
+      JOIN jira_for_looker.issue AS issue
          ON issue_sprint.issue_id = issue.id
       WHERE issue.created <= sprint.start_date
       GROUP BY sprint.id, sprint.name

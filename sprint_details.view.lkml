@@ -3,7 +3,7 @@ view: sprint_details {
 # separate columns in this derived table
 # Otherwise, it's identical to the Sprint table
 derived_table: {
-    sql: select *, trim(split_part(name,'-',1)) as release, trim(split_part(name,'-',2)) as sprint, trim(split_part(name,'-',3)) as team from jira.sprint where name ~ 'R[0-9]+\s*-\s*S[0-9]+\s*-\s*.*'
+    sql: select *, trim(split_part(name,'-',1)) as release, trim(split_part(name,'-',2)) as sprint, trim(split_part(name,'-',3)) as team from jira_for_looker.sprint where name ~ 'R[0-9]+\s*-\s*S[0-9]+\s*-\s*.*'
       ;;
   }
 

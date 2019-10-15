@@ -1,5 +1,5 @@
   view: comment {
-    sql_table_name: JIRA.COMMENT ;;
+    sql_table_name: jira_for_looker.COMMENT ;;
 
     dimension: id {
       primary_key: yes

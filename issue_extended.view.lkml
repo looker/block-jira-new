@@ -58,42 +58,42 @@ view: issue_extended {
                ,LISTAGG(version.name, ', ') as fix_version_list
                ,LISTAGG(issue_link.related_issue_id, ', ') as related_issues_list
 
-         FROM jira.issue issue
+         FROM jira_for_looker.issue issue
          -- Single value fields.
          -- If the field contains an id, look it up
          -- in the appropriate table.  Many of them will
          -- be in the field_option table.  The
          -- field_option table must have a unique alias
          -- each time it is referenced
-         LEFT OUTER JOIN jira.field_option department -- unique alias
+         LEFT OUTER JOIN jira_for_looker.field_option department -- unique alias
             ON issue.department = department.id
-         LEFT OUTER JOIN jira.project
+         LEFT OUTER JOIN jira_for_looker.project
             ON issue.project = project.id
-         LEFT OUTER JOIN jira.field_option severity -- unique alias
+         LEFT OUTER JOIN jira_for_looker.field_option severity -- unique alias
             ON issue.severity = severity.id
-         LEFT OUTER JOIN jira.status
+         LEFT OUTER JOIN jira_for_looker.status
             ON issue.status = status.id
-         LEFT OUTER JOIN jira.issue_type
+         LEFT OUTER JOIN jira_for_looker.issue_type
             ON issue.issue_type = issue_type.id
 
          -- Multi-value fields
-         LEFT OUTER JOIN jira.issue_supported_browsers
+         LEFT OUTER JOIN jira_for_looker.issue_supported_browsers
             ON issue.id = issue_supported_browsers.issue_id
 
          -- Multi vlaue field that stores ids.  In this example
          -- the issue_component table stores component_id's
          -- which are looked up in the component table
-         LEFT OUTER JOIN jira.issue_component
+         LEFT OUTER JOIN jira_for_looker.issue_component
             ON issue.id = issue_component.issue_id
-         LEFT OUTER JOIN jira.component
+         LEFT OUTER JOIN jira_for_looker.component
             ON issue_component.component_id = component.id
 
-         LEFT OUTER JOIN jira.issue_fix_version
+         LEFT OUTER JOIN jira_for_looker.issue_fix_version
             ON issue.id = issue_fix_version.issue_id
-         LEFT OUTER JOIN jira.version
+         LEFT OUTER JOIN jira_for_looker.version
             ON issue_fix_version_s.version_id = version.id
 
-         LEFT OUTER JOIN jira.issue_link
+         LEFT OUTER JOIN jira_for_looker.issue_link
             ON issue.id = issue_link.issue_id
 
          -- Each non-aggregated field (not included in a LISTAGG) needs to

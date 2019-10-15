@@ -1,5 +1,5 @@
   view: resolution {
-    sql_table_name: JIRA.RESOLUTION ;;
+    sql_table_name: jira_for_looker.RESOLUTION ;;
 
     dimension: id {
       primary_key: yes

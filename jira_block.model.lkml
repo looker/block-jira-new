@@ -7,7 +7,7 @@ include: "*.view"
 include: "*.dashboard"
 
 datagroup: fivetran_datagroup {
-  sql_trigger: SELECT max(date_trunc('minute', done)) FROM jira.fivetran_audit ;;
+  sql_trigger: SELECT max(date_trunc('minute', done)) FROM jira_for_looker.fivetran_audit ;;
   max_cache_age: "24 hours"
 }
 

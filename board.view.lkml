@@ -1,5 +1,5 @@
   view: board {
-    sql_table_name: JIRA.BOARD ;;
+    sql_table_name: jira_for_looker.BOARD ;;
 
     dimension: id {
       primary_key: yes

@@ -6,21 +6,21 @@ view: sprint_by_date {
     #distribution_style: all
     sql: SELECT "issue_id",
        "time" as start_time,
-       (select NVL(min(time), '9999-01-01') as end_time from jira.issue_sprint_history ish2
+       (select NVL(min(time), '9999-01-01') as end_time from jira_for_looker.issue_sprint_history ish2
           where ish2.issue_id = ish.issue_id and ish2.time > ish.time) as end_time,
        "value",
        "sprint_id"
-FROM jira.issue_sprint_history ish
+FROM jira_for_looker.issue_sprint_history ish
 UNION ALL
 SELECT ist.issue_id as issue_id,
       i.created as start_time,
       '9999-01-01' as end_time,
       NULL as value,
       ist.sprint_id as sprint_id
-FROM jira.issue_sprint ist
-   LEFT OUTER JOIN jira.issue i on ist.issue_id = i.id
+FROM jira_for_looker.issue_sprint ist
+   LEFT OUTER JOIN jira_for_looker.issue i on ist.issue_id = i.id
 WHERE 1 = 1
-AND  NOT EXISTS (select issue_id from jira.issue_sprint_history where issue_id = ist.issue_id)
+AND  NOT EXISTS (select issue_id from jira_for_looker.issue_sprint_history where issue_id = ist.issue_id)
  ;;
 
     indexes: ["sprint_id", "issue_id"]

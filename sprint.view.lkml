@@ -1,5 +1,5 @@
       view: sprint {
-        sql_table_name: JIRA.SPRINT ;;
+        sql_table_name: jira_for_looker.SPRINT ;;
 
         dimension: id {
           primary_key: yes

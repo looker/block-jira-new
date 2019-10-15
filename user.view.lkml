@@ -1,5 +1,5 @@
       view: user {
-        sql_table_name: JIRA."USER" ;;
+        sql_table_name: jira_for_looker."USER" ;;
 
         dimension: id {
           primary_key: yes
