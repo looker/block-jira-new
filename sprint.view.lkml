@@ -82,7 +82,7 @@
         # Custom Fields
         dimension: duration_days {
           type: number
-          sql: DATEDIFF(day, ${start_raw}, ${end_raw}) ;;
+          sql: timestamp_diff(${end_raw}, ${start_raw}, day) ;;
         }
 
         # ----- Sets of fields for drilling ------

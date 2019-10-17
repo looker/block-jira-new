@@ -152,7 +152,7 @@ view: issue {
     group_label: "Resolution"
     label: "Time to Resolve (Hours)"
     type: number
-    sql: DATEDIFF(h,${created_raw},${resolved_raw}) ;;
+    sql: timestamp_diff(${resolved_raw}, ${created_raw}, hour) ;;
     value_format_name: decimal_0
   }
 
@@ -160,7 +160,7 @@ view: issue {
     group_label: "Resolution"
     label: "Time to Resolve (Minutes)"
     type: number
-    sql: DATEDIFF(m,${created_raw},${resolved_raw}) ;;
+    sql: timestamp_diff(${resolved_raw}, ${created_raw}, minute) ;;
     value_format_name: decimal_0
   }
 
@@ -168,22 +168,22 @@ view: issue {
     group_label: "Resolution"
     label: "Time to Resolve (Days)"
     type: number
-    sql: DATEDIFF(d,${created_raw},${resolved_raw}) ;;
+    sql: timestamp_diff(${resolved_raw}, ${created_raw}, day) ;;
     value_format_name: decimal_0
   }
 
-  measure: total_time_to_resolve_issues_hours {
+  measure: total_days_to_resolve_issues_hours {
     group_label: "Resolution"
-    label: "Total Time to Resolve Issues per Grouping"
+    label: "Total Days to Resolve Issues"
     description: "The total hours required to resolve all issues in the chosen dimension grouping"
     type: sum
     sql: ${days_to_resolve_issue} ;;
     value_format_name: decimal_0
   }
 
-  measure: avg_time_to_resolve_issues_hours {
+  measure: avg_days_to_resolve_issues_hours {
     group_label: "Resolution"
-    label: "Avg Time to Resolve Issues per Grouping"
+    label: "Avg Number of Days to Resolve Issues"
     description: "The average hours required to resolve all issues in the chosen dimension grouping"
     type: average
     sql: ${days_to_resolve_issue} ;;
@@ -211,24 +211,6 @@ view: issue {
     type: sum
     sql: ${story_points} ;;
   }
-
-# # measure: total_open_story_points {
-#    type: sum
-#    sql: ${story_points} ;;
-##    filters: {
-#      field: status.name
-#      value:"Open, In Progress, In Development, In QA, In Review"
-#    }
-#  }
-
-#  measure: total_closed_story_points {
-#    type: sum
-#    sql: ${story_points} ;;
-#    filters: {
-#      field: status.name
-#      value:"Closed, Done, Ready for Production"
-#    }
-#  }
 
   dimension_group: updated {
     group_label: "Dates"

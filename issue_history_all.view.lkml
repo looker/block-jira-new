@@ -32,9 +32,6 @@ view: issue_history_all {
       select trh."issue_id", trh."time", fo."name", 'Op Tools Request' as "changed" from jira_for_looker.issue_op_tools_request_history trh
       LEFT OUTER JOIN jira_for_looker.field_option fo on trh.field_option_id = fo.id
        ;;
-    indexes: ["issue_id", "time"]
-    # For Redshift only
-    #distribution_style: all
   }
 
   measure: count {

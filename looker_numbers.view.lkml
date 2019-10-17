@@ -30,7 +30,6 @@ derived_table: {
         (SELECT 0 as n UNION ALL SELECT 1) p10
 
  ;;
-  indexes: ["number"]
   persist_for: "24 hours"
   # For Redshift only
   #distribution_style: all
