@@ -1,4 +1,11 @@
+include: "//block-jira-config/issue.view"
+
 view: issue {
+  extends: [issue_config]
+}
+
+view: issue_core {
+  extension: required
   sql_table_name: jira_for_looker.issue ;;
 
   dimension: id {

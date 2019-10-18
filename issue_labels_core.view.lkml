@@ -1,4 +1,11 @@
+include: "//block-jira-config/issue_labels.view"
+
 view: issue_labels {
+  extends: [issue_labels_config]
+}
+
+view: issue_labels_core {
+  extension: required
   sql_table_name: jira_for_looker.issue_labels ;;
 
   dimension: _fivetran_synced {

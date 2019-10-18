@@ -1,4 +1,11 @@
+include: "//block-jira-config/epic.view"
+
 view: epic {
+  extends: [epic_config]
+}
+
+view: epic_core {
+  extension: required
   sql_table_name: jira_for_looker.epic ;;
 
   dimension: id {

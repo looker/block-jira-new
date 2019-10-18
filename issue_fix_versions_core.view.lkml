@@ -1,4 +1,11 @@
+include: "//block-jira-config/issue_fix_versions.view"
+
 view: issue_fix_versions {
+  extends: [issue_fix_versions_config]
+}
+
+view: issue_fix_versions_core {
+  extension: required
   sql_table_name: jira_for_looker.issue_fix_versions ;;
 
   dimension: _fivetran_synced {

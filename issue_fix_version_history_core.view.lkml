@@ -1,5 +1,12 @@
+include: "//block-jira-config/issue_fix_version_history.view"
+
 view: issue_fix_version_history {
-  sql_table_name: jira_for_looker.ISSUE_FIX_VERSION_HISTORY ;;
+  extends: [issue_fix_version_history_config]
+}
+
+view: issue_fix_version_history_core {
+  extension: required
+  sql_table_name: jira_for_looker.issue_fix_version_history ;;
 
   dimension: _fivetran_synced {
     type: string

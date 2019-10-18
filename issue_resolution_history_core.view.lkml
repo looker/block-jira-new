@@ -1,4 +1,11 @@
+include: "//block-jira-config/issue_resolution_history.view"
+
 view: issue_resolution_history {
+  extends: [issue_resolution_history_config]
+}
+
+view: issue_resolution_history_core {
+  extension: required
   sql_table_name: jira_for_looker.issue_resolution_history ;;
 
   dimension: _fivetran_synced {
