@@ -6,7 +6,7 @@ view: issue_project_history {
 
 view: issue_project_history_core {
   extension: required
-  sql_table_name: jira_for_looker.issue_project_history ;;
+  sql_table_name: @{SCHEMA_NAME}.issue_project_history ;;
 
   dimension_group: _fivetran_synced {
     type: time

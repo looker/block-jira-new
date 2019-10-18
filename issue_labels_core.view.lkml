@@ -6,7 +6,7 @@ view: issue_labels {
 
 view: issue_labels_core {
   extension: required
-  sql_table_name: jira_for_looker.issue_labels ;;
+  sql_table_name: @{SCHEMA_NAME}.issue_labels ;;
 
   dimension: _fivetran_synced {
     type: string

@@ -6,7 +6,7 @@ view: sprint {
 
 view: sprint_core {
   extension: required
-  sql_table_name: jira_for_looker.sprint ;;
+  sql_table_name: @{SCHEMA_NAME}.sprint ;;
 
   dimension: id {
     primary_key: yes

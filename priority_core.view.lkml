@@ -6,7 +6,7 @@ view: priority {
 
 view: priority_core {
   extension: required
-  sql_table_name: jira_for_looker.priority ;;
+  sql_table_name: @{SCHEMA_NAME}.priority ;;
 
   dimension: id {
     primary_key: yes

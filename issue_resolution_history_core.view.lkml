@@ -6,7 +6,7 @@ view: issue_resolution_history {
 
 view: issue_resolution_history_core {
   extension: required
-  sql_table_name: jira_for_looker.issue_resolution_history ;;
+  sql_table_name: @{SCHEMA_NAME}.issue_resolution_history ;;
 
   dimension: _fivetran_synced {
     type: string

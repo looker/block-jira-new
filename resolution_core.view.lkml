@@ -6,7 +6,7 @@ view: resolution {
 
 view: resolution_core {
   extension: required
-  sql_table_name: jira_for_looker.resolution ;;
+  sql_table_name: @{SCHEMA_NAME}.resolution ;;
 
   dimension: id {
     primary_key: yes

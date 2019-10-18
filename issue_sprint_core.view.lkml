@@ -6,7 +6,7 @@ view: issue_sprint {
 
 view: issue_sprint_core {
   extension: required
-  sql_table_name: jira_for_looker.issue_sprint ;;
+  sql_table_name: @{SCHEMA_NAME}.issue_sprint ;;
 
   dimension_group: _fivetran_synced {
     type: time

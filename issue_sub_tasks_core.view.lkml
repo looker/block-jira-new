@@ -5,7 +5,7 @@ view: issue_sub_tasks {
 }
 
 view: issue_sub_tasks_core {
-  sql_table_name: jira_for_looker.issue_sub_tasks ;;
+  sql_table_name: @{SCHEMA_NAME}.issue_sub_tasks ;;
 
   dimension_group: _fivetran_synced {
     type: time

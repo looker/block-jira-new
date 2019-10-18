@@ -1,11 +1,11 @@
-connection: "looker_app"
+connection: "@{CONNECTION_NAME}"
 
 include: "*.view"
 include: "*.dashboard"
 include: "*.explore"
 
-include: "//block-jira-config/*.view"
-include: "//block-jira-config/*.model"
+include: "//@{CONFIG_PROJECT_NAME}/*.view"
+include: "//@{CONFIG_PROJECT_NAME}/*.model"
 
 persist_with: fivetran_datagroup
 

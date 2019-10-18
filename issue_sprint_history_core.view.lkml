@@ -6,7 +6,7 @@ view: issue_sprint_history {
 
 view: issue_sprint_history_core {
   extension: required
-  sql_table_name: jira_for_looker.issue_sprint_history ;;
+  sql_table_name: @{SCHEMA_NAME}.issue_sprint_history ;;
 
   dimension_group: _fivetran_synced {
     type: time

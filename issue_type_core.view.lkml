@@ -6,7 +6,7 @@ view: issue_type {
 
 view: issue_type_core {
   extension: required
-  sql_table_name: jira_for_looker.issue_type ;;
+  sql_table_name: @{SCHEMA_NAME}.issue_type ;;
 
   dimension: id {
     primary_key: yes

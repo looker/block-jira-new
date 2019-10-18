@@ -6,7 +6,7 @@ view: project {
 
 view: project_core {
   extension: required
-  sql_table_name: jira_for_looker.project ;;
+  sql_table_name: @{SCHEMA_NAME}.project ;;
 
   dimension: id {
     primary_key: yes

@@ -6,7 +6,7 @@ view: user {
 
 view: user_core {
   extension: required
-  sql_table_name: jira_for_looker.user ;;
+  sql_table_name: @{SCHEMA_NAME}.user ;;
 
   dimension: id {
     primary_key: yes

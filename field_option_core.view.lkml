@@ -6,7 +6,7 @@ view: field_option {
 
 view: field_option_core {
   extension: required
-  sql_table_name: jira_for_looker.field_option ;;
+  sql_table_name: @{SCHEMA_NAME}.field_option ;;
 
   dimension: id {
     primary_key: yes

@@ -6,7 +6,7 @@ view: status {
 
 view: status_core {
   extension: required
-  sql_table_name: jira_for_looker.status ;;
+  sql_table_name: @{SCHEMA_NAME}.status ;;
 
   dimension: id {
     primary_key: yes

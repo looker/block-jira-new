@@ -6,7 +6,7 @@ view: comment {
 
 view: comment_core {
   extension: required
-  sql_table_name: jira_for_looker.comment ;;
+  sql_table_name: @{SCHEMA_NAME}.comment ;;
 
   dimension: id {
     primary_key: yes

@@ -6,7 +6,7 @@ view: version {
 
 view: version_core {
   extension: required
-  sql_table_name: jira_for_looker.version ;;
+  sql_table_name: @{SCHEMA_NAME}.version ;;
 
   dimension: id {
     primary_key: yes

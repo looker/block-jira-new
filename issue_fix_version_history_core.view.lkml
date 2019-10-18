@@ -6,7 +6,7 @@ view: issue_fix_version_history {
 
 view: issue_fix_version_history_core {
   extension: required
-  sql_table_name: jira_for_looker.issue_fix_version_history ;;
+  sql_table_name: @{SCHEMA_NAME}.issue_fix_version_history ;;
 
   dimension: _fivetran_synced {
     type: string

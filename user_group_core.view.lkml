@@ -6,7 +6,7 @@ view: user_group {
 
 view: user_group_core {
   extension: required
-  sql_table_name: jira_for_looker.user_group ;;
+  sql_table_name: @{SCHEMA_NAME}.user_group ;;
 
   dimension_group: _fivetran_synced {
     type: time

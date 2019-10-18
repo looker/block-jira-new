@@ -6,7 +6,7 @@ view: board {
 
 view: board_core {
   extension: required
-  sql_table_name: jira_for_looker.board ;;
+  sql_table_name: @{SCHEMA_NAME}.board ;;
 
   dimension: id {
     primary_key: yes
