@@ -7,6 +7,11 @@ view: issue {
     sql: ${TABLE}.id ;;
   }
 
+  dimension: key {
+    type: string
+    sql: ${TABLE}.key ;;
+  }
+
   dimension_group: _fivetran_synced {
     type: time
     timeframes: [
@@ -49,7 +54,6 @@ view: issue {
   dimension_group: created {
     group_label: "Dates"
     type: time
-    convert_tz: no
     timeframes: [
       raw,
       time,
@@ -84,7 +88,6 @@ view: issue {
       quarter,
       year
     ]
-    convert_tz: no
     sql: ${TABLE}.due_date ;;
   }
 
