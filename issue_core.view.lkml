@@ -242,6 +242,30 @@ view: issue_core {
     drill_fields: [id, days_to_resolve_issue, created_date, severity ]
   }
 
+  measure: number_of_open_issues {
+    type: count
+    drill_fields: [id, days_to_resolve_issue, created_date, severity ]
+
+    filters: {
+      field: status_category.name
+      value: "-Done"
+    }
+  }
+
+  measure: number_of_open_issues_this_quarter {
+    type: count
+    drill_fields: [id, days_to_resolve_issue, created_date, severity ]
+
+    filters: {
+      field: status_category.name
+      value: "-Done"
+    }
+    filters: {
+      field: issue.created_date
+      value: "this quarter"
+    }
+  }
+
   # ----- Sets of fields for drilling ------
   #set: detail {
   #  fields: [
