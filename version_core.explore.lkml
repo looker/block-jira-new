@@ -1,6 +1,7 @@
 # Update based on how you are associating versions to
 explore: version_core {
   extension: required
+  fields: [ALL_FIELDS*, -issue.issue_exclusion_set*]
   join: issue_fix_versions {
     type: left_outer
     relationship: one_to_many

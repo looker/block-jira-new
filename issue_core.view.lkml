@@ -200,12 +200,6 @@ view: issue_core {
     value_format_name: decimal_0
   }
 
-  dimension: severity {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.severity ;;
-  }
-
   dimension: status {
     hidden: yes
     type: number
@@ -239,12 +233,12 @@ view: issue_core {
 
   measure: count {
     type: count
-    drill_fields: [id, days_to_resolve_issue, created_date, severity ]
+    drill_fields: [id, days_to_resolve_issue, created_date ]
   }
 
   measure: number_of_open_issues {
     type: count
-    drill_fields: [id, days_to_resolve_issue, created_date, severity ]
+    drill_fields: [id, days_to_resolve_issue, created_date, status, status_category.name ]
 
     filters: {
       field: status_category.name
@@ -252,9 +246,9 @@ view: issue_core {
     }
   }
 
-  measure: number_of_open_issues_this_quarter {
+  measure: number_of_open_issues_this_month {
     type: count
-    drill_fields: [id, days_to_resolve_issue, created_date, severity ]
+    drill_fields: [id, days_to_resolve_issue, created_date, status, status_category.name ]
 
     filters: {
       field: status_category.name
@@ -262,8 +256,30 @@ view: issue_core {
     }
     filters: {
       field: issue.created_date
-      value: "this quarter"
+      value: "this month"
     }
+  }
+
+  measure: number_of_issues_closed_this_month {
+    type: count
+
+    filters: {
+      field: issue.resolved_date
+      value: "this month"
+    }
+
+    drill_fields: [id, resolved_date, status_category.name]
+  }
+
+  measure: number_of_issues_closed_last_month {
+    type: count
+
+    filters: {
+      field: issue.resolved_date
+      value: "last month"
+    }
+
+    drill_fields: [id, resolved_date, status_category.name]
   }
 
   # ----- Sets of fields for drilling ------
@@ -272,5 +288,9 @@ view: issue_core {
   #    external_issue_id,
   #  ]
   #}
+
+  set: issue_exclusion_set {
+    fields: [number_of_open_issues, number_of_open_issues_this_month, number_of_issues_closed_this_month, number_of_issues_closed_last_month]
+  }
 
 }

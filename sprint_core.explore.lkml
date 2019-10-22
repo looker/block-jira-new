@@ -1,5 +1,6 @@
 explore: sprint_core {
   extension: required
+  fields: [ALL_FIELDS*, -issue.issue_exclusion_set*]
   join: issue_sprint {
     type:  left_outer
     sql_on: ${sprint.id} = ${issue_sprint.sprint_id} ;;
