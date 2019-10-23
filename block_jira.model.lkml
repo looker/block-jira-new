@@ -6,6 +6,7 @@ include: "*.explore"
 
 include: "//@{CONFIG_PROJECT_NAME}/*.view"
 include: "//@{CONFIG_PROJECT_NAME}/*.model"
+include: "//@{CONFIG_PROJECT_NAME}/*.dashboard"
 
 persist_with: fivetran_datagroup
 
