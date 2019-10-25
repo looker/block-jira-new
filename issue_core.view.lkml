@@ -231,24 +231,19 @@ view: issue_core {
     sql: ${TABLE}.updated ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: [id, days_to_resolve_issue, created_date ]
-  }
-
   measure: number_of_open_issues {
     type: count
-    drill_fields: [id, days_to_resolve_issue, created_date, status, status_category.name ]
 
     filters: {
       field: status_category.name
       value: "-Done"
     }
+
+    drill_fields: [issue_open_drill_set*]
   }
 
   measure: number_of_open_issues_this_month {
     type: count
-    drill_fields: [id, days_to_resolve_issue, created_date, status, status_category.name ]
 
     filters: {
       field: status_category.name
@@ -258,6 +253,8 @@ view: issue_core {
       field: issue.created_date
       value: "this month"
     }
+
+    drill_fields: [issue_open_drill_set*]
   }
 
   measure: number_of_issues_closed_this_month {
@@ -268,7 +265,7 @@ view: issue_core {
       value: "this month"
     }
 
-    drill_fields: [id, resolved_date, status_category.name]
+    drill_fields: [issue_closed_drill_set*]
   }
 
   measure: number_of_issues_closed_last_month {
@@ -279,7 +276,7 @@ view: issue_core {
       value: "last month"
     }
 
-    drill_fields: [id, resolved_date, status_category.name]
+    drill_fields: [issue_closed_drill_set*]
   }
 
   # ----- Sets of fields for drilling ------
@@ -288,6 +285,15 @@ view: issue_core {
   #    external_issue_id,
   #  ]
   #}
+
+  set: issue_open_drill_set {
+    fields: [key, created_date, status_category.name, assignee]
+  }
+
+  set: issue_closed_drill_set {
+    fields: [key, resolved_date, assignee]
+  }
+
 
   set: issue_exclusion_set {
     fields: [number_of_open_issues, number_of_open_issues_this_month, number_of_issues_closed_this_month, number_of_issues_closed_last_month]
