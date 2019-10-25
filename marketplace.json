@@ -1,0 +1,35 @@
+{
+  "label": "Jira",
+  "category_label": "Tools",
+  "branding": {
+    "image_uri": "https://wwwstatic-a.lookercdn.com/blocks/logos/google.png",
+    "tagline": "Analyze and monitor your team's efficiency with Looker's Jira block"
+  },
+
+  "constants": {
+    "CONNECTION_NAME": {
+      "label": "Connection Name",
+      "value_constraint": "connection"
+    },
+    "SCHEMA_NAME": {
+      "label": "Schema Name"
+    },
+    "CONFIG_PROJECT_NAME": {
+      "label": "Config Project Name"
+    }
+  },
+  "models": [
+    {
+      "name": "block_jira",
+      "connection_constant": "CONNECTION_NAME"
+    }
+  ],
+  "auxiliary_projects": [
+    {
+      "git_uri": "git://github.com/looker/block-jira-config.git",
+      "git_ref": "1c6f81f6d283fa3df0dbe17d0e73085c9e98f530",
+      "label": "Jira Config",
+      "constant_name": "CONFIG_PROJECT_NAME"
+    }
+  ]
+}
