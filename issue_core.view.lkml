@@ -231,6 +231,12 @@ view: issue_core {
     sql: ${TABLE}.updated ;;
   }
 
+  measure: count {
+    type: count
+
+    drill_fields: [issue_open_drill_set*]
+  }
+
   measure: number_of_open_issues {
     type: count
 
@@ -257,7 +263,19 @@ view: issue_core {
     drill_fields: [issue_open_drill_set*]
   }
 
-  measure: number_of_issues_closed_this_month {
+  measure: number_of_resolved_issues {
+    type: count
+
+    filters: {
+      field: issue.resolved_date
+      value: "-NULL"
+    }
+
+    drill_fields: [issue_open_drill_set*]
+  }
+
+
+  measure: number_of_issues_resolved_this_month {
     type: count
 
     filters: {
@@ -268,7 +286,7 @@ view: issue_core {
     drill_fields: [issue_closed_drill_set*]
   }
 
-  measure: number_of_issues_closed_last_month {
+  measure: number_of_issues_resolved_last_month {
     type: count
 
     filters: {
