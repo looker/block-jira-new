@@ -103,6 +103,11 @@ view: issue_core {
     sql: ${TABLE}.environment ;;
   }
 
+  dimension: epic_name {
+    type: string
+    sql: ${TABLE}.epic_name ;;
+  }
+
   dimension: issue_type {
     hidden: yes
     type: number
@@ -209,6 +214,11 @@ view: issue_core {
   dimension: story_points {
     type: number
     sql: ${TABLE}.story_points ;;
+  }
+
+  dimension: summary {
+    type: string
+    sql: ${TABLE}.summary ;;
   }
 
   measure: total_story_points {

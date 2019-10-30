@@ -45,4 +45,9 @@ explore: issue_core {
     sql_on: ${issue.id} = ${comment.issue_id} ;;
     relationship: one_to_many
   }
+  join: epic {
+    type: left_outer
+    sql_on: ${issue.epic_name} = ${epic.name} ;;
+    relationship: many_to_one
+  }
 }
