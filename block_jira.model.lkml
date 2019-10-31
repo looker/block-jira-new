@@ -25,7 +25,3 @@ explore: issue {
 explore: project {
   extends: [project_config]
 }
-
-explore: epic {
-  extends: [epic_config]
-}
