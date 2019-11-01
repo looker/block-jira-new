@@ -1,7 +1,40 @@
-- dashboard: bugs
-  title: Bugs
+- dashboard: bugs_overview
+  title: Bugs Overview
   layout: newspaper
   elements:
+  - title: Open Bugs
+    name: Open Bugs
+    model: block_jira
+    explore: issue
+    type: single_value
+    fields: [issue.count]
+    filters:
+      issue_type.is_bug: 'Yes'
+      status_category.name: "-Done"
+    limit: 500
+    listen:
+      Project: project.name
+    row: 0
+    col: 0
+    width: 6
+    height: 3
+  - title: Resolved Bugs (This Month)
+    name: Resolved Bugs (This Month)
+    model: block_jira
+    explore: issue
+    type: single_value
+    fields: [issue.count]
+    filters:
+      issue_type.is_bug: 'Yes'
+      status_category.name: Done
+      issue.created_date: this month
+    limit: 500
+    listen:
+      Project: project.name
+    row: 3
+    col: 0
+    width: 6
+    height: 3
   - title: Avg Time to Bug Resolution
     name: Avg Time to Bug Resolution
     model: block_jira
@@ -16,7 +49,26 @@
           " Days")', value_format: !!null '', value_format_name: !!null '', _kind_hint: measure,
         _type_hint: string}]
     hidden_fields: [issue.avg_days_to_resolve_issues_hours]
+    listen:
+      Project: project.name
     row: 9
+    col: 0
+    width: 6
+    height: 3
+  - title: Resolved Bugs (This Year)
+    name: Resolved Bugs (This Year)
+    model: block_jira
+    explore: issue
+    type: single_value
+    fields: [issue.count]
+    filters:
+      issue_type.is_bug: 'Yes'
+      status_category.name: Done
+      issue.created_date: this year
+    limit: 500
+    listen:
+      Project: project.name
+    row: 6
     col: 0
     width: 6
     height: 3
@@ -90,91 +142,11 @@
     show_null_points: true
     interpolation: linear
     hidden_fields:
-    listen: {}
+    listen:
+      Project: project.name
     row: 20
     col: 0
     width: 13
-    height: 10
-  - title: Open Bugs
-    name: Open Bugs
-    model: block_jira
-    explore: issue
-    type: single_value
-    fields: [issue.count]
-    filters:
-      issue_type.is_bug: 'Yes'
-      status_category.name: "-Done"
-    limit: 500
-    listen: {}
-    row: 0
-    col: 0
-    width: 6
-    height: 3
-  - title: Resolved Bug (This Month)
-    name: Resolved Bug (This Month)
-    model: block_jira
-    explore: issue
-    type: single_value
-    fields: [issue.count]
-    filters:
-      issue_type.is_bug: 'Yes'
-      status_category.name: Done
-      issue.created_date: this month
-    limit: 500
-    listen: {}
-    row: 3
-    col: 0
-    width: 6
-    height: 3
-  - title: Resolved Bugs (This Year)
-    name: Resolved Bugs (This Year)
-    model: block_jira
-    explore: issue
-    type: single_value
-    fields: [issue.count]
-    filters:
-      issue_type.is_bug: 'Yes'
-      status_category.name: Done
-      issue.created_date: this year
-    limit: 500
-    row: 6
-    col: 0
-    width: 6
-    height: 3
-  - title: Open Bugs without Assignees
-    name: Open Bugs without Assignees
-    model: block_jira
-    explore: issue
-    type: table
-    fields: [issue.key, priority.name, issue.description, issue.created_date, sprint.name,
-      project.name]
-    filters:
-      issue.assignee: 'NULL'
-      issue_type.is_bug: 'Yes'
-      status_category.name: "-Done"
-    sorts: [issue.created_date desc]
-    limit: 500
-    column_limit: 50
-    show_view_names: false
-    show_row_numbers: true
-    transpose: false
-    truncate_text: true
-    hide_totals: false
-    hide_row_totals: false
-    size_to_fit: true
-    table_theme: gray
-    limit_displayed_rows: false
-    enable_conditional_formatting: false
-    header_text_alignment: left
-    header_font_size: '12'
-    rows_font_size: '12'
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    series_types: {}
-    listen: {}
-    row: 20
-    col: 13
-    width: 11
     height: 10
   - title: Bugs by Created Date and Status
     name: Bugs by Created Date and Status
@@ -243,13 +215,50 @@
     show_silhouette: false
     totals_color: "#808080"
     hidden_fields:
-    listen: {}
+    listen:
+      Project: project.name
     row: 0
     col: 6
     width: 18
     height: 12
-  - title: Resolved Bugs by Created Month
-    name: Resolved Bugs by Created Month
+  - title: Open Bugs without Assignees
+    name: Open Bugs without Assignees
+    model: block_jira
+    explore: issue
+    type: table
+    fields: [issue.key, priority.name, issue.summary, issue.created_date, sprint.name,
+      project.name]
+    filters:
+      issue.assignee: 'NULL'
+      issue_type.is_bug: 'Yes'
+      status_category.name: "-Done"
+    sorts: [issue.created_date desc]
+    limit: 500
+    column_limit: 50
+    show_view_names: false
+    show_row_numbers: true
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: gray
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: '12'
+    rows_font_size: '12'
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    series_types: {}
+    listen:
+      Project: project.name
+    row: 20
+    col: 13
+    width: 11
+    height: 17
+  - title: Resolved Bugs by Month
+    name: Resolved Bugs by Month
     model: block_jira
     explore: issue
     type: looker_area
@@ -284,7 +293,7 @@
     y_axis_reversed: false
     plot_size_by_field: false
     trellis: ''
-    stacking: ''
+    stacking: normal
     limit_displayed_rows: false
     legend_position: center
     series_types: {}
@@ -298,7 +307,77 @@
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
+    listen:
+      Project: project.name
     row: 12
     col: 0
     width: 24
     height: 8
+  - title: Open Bugs by Priority
+    name: Open Bugs by Priority
+    model: block_jira
+    explore: issue
+    type: looker_bar
+    fields: [issue.number_of_resolved_issues, priority.name]
+    filters:
+      issue_type.is_bug: 'Yes'
+    sorts: [issue.number_of_resolved_issues desc]
+    limit: 500
+    column_limit: 50
+    color_application:
+      collection_id: 5b121cce-cf79-457c-a52a-9162dc174766
+      palette_id: 55dee055-18cf-4472-9669-469322a6f264
+      options:
+        steps: 5
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    y_axes: [{label: '', orientation: left, series: [{axisId: issue.number_of_resolved_issues,
+            id: issue.number_of_resolved_issues, name: Number of Resolved Issues}],
+        showLabels: false, showValues: true, unpinAxis: false, tickDensity: default,
+        type: linear}]
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: false
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: normal
+    limit_displayed_rows: false
+    legend_position: center
+    series_types: {}
+    point_style: none
+    series_colors:
+      issue.number_of_resolved_issues: "#462C9D"
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    show_null_points: true
+    interpolation: linear
+    listen: {}
+    row: 30
+    col: 0
+    width: 13
+    height: 7
+  filters:
+  - name: Project
+    title: Project
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    model: block_jira
+    explore: issue
+    listens_to_filters: []
+    field: project.name
