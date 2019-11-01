@@ -1,9 +1,9 @@
 {
   "label": "Jira",
-  "category_label": "Tools",
+  "category_label": "Models",
   "branding": {
     "image_uri": "https://wwwstatic-a.lookercdn.com/blocks/logos/google.png",
-    "tagline": "Analyze and monitor your team's efficiency with Looker's Jira block"
+    "tagline": "Analyze and monitor your team's performance with Looker's Jira block"
   },
 
   "constants": {
@@ -27,7 +27,7 @@
   "auxiliary_projects": [
     {
       "git_uri": "git://github.com/looker/block-jira-config.git",
-      "git_ref": "1c6f81f6d283fa3df0dbe17d0e73085c9e98f530",
+      "git_ref": "0c65d4296adff8b247c5543afa7196a1afb82e4a",
       "label": "Jira Config",
       "constant_name": "CONFIG_PROJECT_NAME"
     }
