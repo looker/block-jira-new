@@ -16,6 +16,9 @@
     },
     "CONFIG_PROJECT_NAME": {
       "label": "Config Project Name"
+    },
+    "COMPANY_DOMAIN": {
+      "label": "Company Domain"
     }
   },
   "models": [
@@ -27,7 +30,7 @@
   "auxiliary_projects": [
     {
       "git_uri": "git://github.com/looker/block-jira-config.git",
-      "git_ref": "0c65d4296adff8b247c5543afa7196a1afb82e4a",
+      "git_ref": "65fcbc80c396b9a65917d8a94e0af745b2cd26f1",
       "label": "Jira Config",
       "constant_name": "CONFIG_PROJECT_NAME"
     }
