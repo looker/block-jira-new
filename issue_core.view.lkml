@@ -17,6 +17,10 @@ view: issue_core {
   dimension: key {
     type: string
     sql: ${TABLE}.key ;;
+    link: {
+    url:"http://@{COMPANY_DOMAIN}.atlassian.net/browse/{{ value }}"
+    label: "View in Jira"
+    }
   }
 
   dimension_group: _fivetran_synced {

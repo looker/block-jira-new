@@ -36,6 +36,7 @@ view: priority_core {
   dimension: name {
     type: string
     sql: ${TABLE}.NAME ;;
+    label: "Status"
   }
 
   measure: count {

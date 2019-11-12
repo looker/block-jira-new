@@ -17,6 +17,11 @@ constant: SCHEMA_NAME {
   export: override_required
 }
 
+constant: COMPANY_DOMAIN {
+  value: "looker"
+  export: override_required
+}
+
 ################ Dependencies ################
 
 
@@ -25,5 +30,9 @@ local_dependency: {
 
   override_constant: SCHEMA_NAME {
     value: "@{SCHEMA_NAME}"
+  }
+
+  override_constant: COMPANY_DOMAIN {
+    value: "@{COMPANY_DOMAIN}"
   }
 }
