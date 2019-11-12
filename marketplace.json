@@ -2,7 +2,7 @@
   "label": "Jira",
   "category_label": "Models",
   "branding": {
-    "image_uri": fileURL("block-icons/pinterest_icon.png"),
+    "image_uri": "https://marketplace-api.looker.com/block-icons/jira_icon.png",
     "tagline": "Analyze and monitor your team's performance with Looker's Jira block"
   },
 
