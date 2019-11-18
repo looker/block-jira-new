@@ -1,4 +1,4 @@
-include: "//block-jira-config/board.view"
+include: "//@{CONFIG_PROJECT_NAME}/board.view"
 
 view: board {
   extends: [board_config]

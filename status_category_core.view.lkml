@@ -1,4 +1,4 @@
-include: "//block-jira-config/status_category.view"
+include: "//@{CONFIG_PROJECT_NAME}/status_category.view"
 
 view: status_category {
   extends: [status_category_config]

@@ -1,4 +1,4 @@
-include: "//block-jira-config/issue_sub_tasks.view"
+include: "//@{CONFIG_PROJECT_NAME}/issue_sub_tasks.view"
 
 view: issue_sub_tasks {
   extends: [issue_sub_tasks_config]

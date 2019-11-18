@@ -1,4 +1,4 @@
-include: "//block-jira-config/issue_type.view"
+include: "//@{CONFIG_PROJECT_NAME}/issue_type.view"
 
 view: issue_type {
   extends: [issue_type_config]

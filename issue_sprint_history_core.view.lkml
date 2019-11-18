@@ -1,4 +1,4 @@
-include: "//block-jira-config/issue_sprint_history.view"
+include: "//@{CONFIG_PROJECT_NAME}/issue_sprint_history.view"
 
 view: issue_sprint_history {
   extends: [issue_sprint_history_config]

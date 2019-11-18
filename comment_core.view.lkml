@@ -1,4 +1,4 @@
-include: "//block-jira-config/comment.view"
+include: "//@{CONFIG_PROJECT_NAME}/comment.view"
 
 view: comment {
   extends: [comment_config]

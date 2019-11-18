@@ -1,4 +1,4 @@
-include: "//block-jira-config/priority.view"
+include: "//@{CONFIG_PROJECT_NAME}/priority.view"
 
 view: priority {
   extends: [priority_config]

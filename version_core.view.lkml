@@ -1,4 +1,4 @@
-include: "//block-jira-config/version.view"
+include: "//@{CONFIG_PROJECT_NAME}/version.view"
 
 view: version {
   extends: [version_config]
