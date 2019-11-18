@@ -1,4 +1,4 @@
-include: "//block-jira-config/component.view"
+include: "//@{CONFIG_PROJECT_NAME}/component.view"
 
 view: component {
   extends: [component_config]

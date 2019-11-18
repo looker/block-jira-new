@@ -1,4 +1,4 @@
-include: "//block-jira-config/issue_labels.view"
+include: "//@{CONFIG_PROJECT_NAME}/issue_labels.view"
 
 view: issue_labels {
   extends: [issue_labels_config]

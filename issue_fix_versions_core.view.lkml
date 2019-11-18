@@ -1,4 +1,4 @@
-include: "//block-jira-config/issue_fix_versions.view"
+include: "//@{CONFIG_PROJECT_NAME}/issue_fix_versions.view"
 
 view: issue_fix_versions {
   extends: [issue_fix_versions_config]

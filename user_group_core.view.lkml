@@ -1,4 +1,4 @@
-include: "//block-jira-config/user_group.view"
+include: "//@{CONFIG_PROJECT_NAME}/user_group.view"
 
 view: user_group {
   extends: [user_group_config]

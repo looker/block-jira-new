@@ -1,4 +1,4 @@
-include: "//block-jira-config/field_option.view"
+include: "//@{CONFIG_PROJECT_NAME}/field_option.view"
 
 view: field_option {
   extends: [field_option_config]

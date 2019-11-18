@@ -1,4 +1,4 @@
-include: "//block-jira-config/user.view"
+include: "//@{CONFIG_PROJECT_NAME}/user.view"
 
 view: user {
   extends: [user_config]

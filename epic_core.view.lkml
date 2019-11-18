@@ -1,4 +1,4 @@
-include: "//block-jira-config/epic.view"
+include: "//@{CONFIG_PROJECT_NAME}/epic.view"
 
 view: epic {
   extends: [epic_config]

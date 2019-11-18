@@ -1,4 +1,4 @@
-include: "//block-jira-config/issue_fix_version_history.view"
+include: "//@{CONFIG_PROJECT_NAME}/issue_fix_version_history.view"
 
 view: issue_fix_version_history {
   extends: [issue_fix_version_history_config]

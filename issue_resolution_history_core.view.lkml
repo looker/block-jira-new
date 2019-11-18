@@ -1,4 +1,4 @@
-include: "//block-jira-config/issue_resolution_history.view"
+include: "//@{CONFIG_PROJECT_NAME}/issue_resolution_history.view"
 
 view: issue_resolution_history {
   extends: [issue_resolution_history_config]

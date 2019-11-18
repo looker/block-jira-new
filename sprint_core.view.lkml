@@ -1,4 +1,4 @@
-include: "//block-jira-config/sprint.view"
+include: "//@{CONFIG_PROJECT_NAME}/sprint.view"
 
 view: sprint {
   extends: [sprint_config]

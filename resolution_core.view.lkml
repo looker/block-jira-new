@@ -1,4 +1,4 @@
-include: "//block-jira-config/resolution.view"
+include: "//@{CONFIG_PROJECT_NAME}/resolution.view"
 
 view: resolution {
   extends: [resolution_config]
