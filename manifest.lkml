@@ -3,7 +3,7 @@ project_name: "block-jira"
 ################ Constants ################
 
 constant: CONFIG_PROJECT_NAME {
-  value: "@{CONFIG_PROJECT_NAME}"
+  value: "block-jira-config"
   export: override_required
 }
 
