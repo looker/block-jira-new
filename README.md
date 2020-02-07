@@ -7,7 +7,7 @@
 
 **(3) Enterprise Data Platform** - Project Managers and Scrum Masters can easily build their own dashboards, and any user is equipped to ask and answer their own questions, save and share their own reports. Additionally, you can take advantage of Looker's advanced scheduling functionality to get Alerts whenever workflows are disrupted.
 
-  
+
 ### Jira Data Structure and Schema
 
 Looker’s Jira Block is designed to work with the Fivetran Jira schema.  Fivetran has abstracted away many of the complexities of the Jira data model to make it easier for reporting purposes.  Because the Jira schema is very customizable and is different for every implementation, rather than attempting to replicate the exact structure of the Jira schema, Fivetran stores the data in more compact format, with Issues as the central focus.
@@ -17,7 +17,7 @@ The Fivetran schema for Jira data can be found [here](https://www.fivetran.com/d
 A more detailed description of how to deploy Looker Blocks in your environment can be found [here](https://discourse.looker.com/t/copying-a-lookml-project-into-looker-from-a-github-repo/1209).
 
 
-Understanding the Fivetran implementation of the Jira data model is important for understanding the LookML model and how you will enhance it based on your own customized version of Jira.  In a typical implementation, the majority of the customizations will be related to the `issue` table, so most of the following discussion will focus on the `issue` table.  
+Understanding the Fivetran implementation of the Jira data model is important for understanding the LookML model and how you will enhance it based on your own customized version of Jira.  In a typical implementation, the majority of the customizations will be related to the `issue` table, so most of the following discussion will focus on the `issue` table.
 
 #### The `issue` table is comprised of three primary types of fields:
 
@@ -67,4 +67,4 @@ LEFT OUTER JOIN jira.field_option fo on erh.field_option_id = fo.id
 
 ### What if I find an error? Suggestions for improvements?
 
-Great! Blocks were designed for continuous improvement through the help of the entire Looker community, and we'd love your input. To log an error or improvement recommentation, simply create a "New Issue" in the corresponding [Github repo for this Block](https://github.com/llooker/jira_block_fivetran/issues). Please be as detailed as possible in your explanation, and we'll address it as quick as we can.
+Great! Blocks were designed for continuous improvement through the help of the entire Looker community and we'd love your input. To report an error or improvement recommendation, please reach out to Looker support via email to support@looker.com or via chat to submit a request. Please be as detailed as possible in your explanation and we'll address it as quick as we can.
