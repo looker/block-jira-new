@@ -30,7 +30,7 @@
   "auxiliary_projects": [
     {
       "git_uri": "git://github.com/looker/block-jira-config.git",
-      "git_ref": "4ab51042c36d996812c915c7525de42875ccdb13",
+      "git_ref": "cb0a2ebb83209753215567b62738627cb0eb8002",
       "label": "Jira Config",
       "constant_name": "CONFIG_PROJECT_NAME"
     }
