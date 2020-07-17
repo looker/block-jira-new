@@ -1,23 +1,25 @@
 explore: issue_core {
   extension: required
-  join: project {
+
+  join: issue_board {
+    fields: []
     type: left_outer
-    sql_on: ${project.id} = ${issue.project} ;;
+    sql_on: ${issue_board.issue_id} = ${issue.id} ;;
     relationship: one_to_many
   }
-  join:  issue_type {
-    type:  left_outer
-    sql_on: ${issue.issue_type} = ${issue_type.id} ;;
-    relationship: many_to_one
-  }
-  join: issue_sprint {
+  join: board {
     type: left_outer
-    sql_on: ${issue_sprint.issue_id} = ${issue.id} ;;
-    relationship: many_to_one
+    sql_on: ${issue_board.board_id} = ${board.id} ;;
+    relationship: one_to_many
   }
   join: sprint {
     type: left_outer
-    sql_on: ${issue_sprint.sprint_id} = ${sprint.id} ;;
+    sql_on: ${board.id} = ${sprint.board_id} ;;
+    relationship: many_to_one
+  }
+  join:  issue_type {
+    type:  left_outer
+    sql_on: ${issue.id} = ${issue_type.id} ;;
     relationship: many_to_one
   }
   join:  priority {
@@ -27,7 +29,12 @@ explore: issue_core {
   }
   join:  status {
     type:  left_outer
-    sql_on: ${issue.status} = ${status.id} ;;
+    sql_on: ${issue.id} = ${status.id} ;;
+    relationship: many_to_one
+  }
+  join:  resolution {
+    type:  left_outer
+    sql_on: ${issue.id} = ${resolution.id} ;;
     relationship: many_to_one
   }
   join:  status_category {
@@ -35,19 +42,10 @@ explore: issue_core {
     sql_on: ${status.status_category_id} = ${status_category.id} ;;
     relationship: many_to_one
   }
-  join: user {
-    type: left_outer
-    sql_on: ${issue.assignee} = ${user.id} ;;
-    relationship: many_to_one
-  }
   join: comment {
     type: left_outer
     sql_on: ${issue.id} = ${comment.issue_id} ;;
     relationship: one_to_many
   }
-  join: epic {
-    type: left_outer
-    sql_on: ${issue.epic_name} = ${epic.name} ;;
-    relationship: many_to_one
-  }
+
 }

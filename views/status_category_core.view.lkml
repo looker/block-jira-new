@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/board.view"
+include: "//@{CONFIG_PROJECT_NAME}/status_category.view"
 
-view: board {
-  extends: [board_config]
+view: status_category {
+  extends: [status_category_config]
 }
 
-view: board_core {
+view: status_category_core {
   extension: required
-  sql_table_name: @{SCHEMA_NAME}.board ;;
+  sql_table_name: @{SCHEMA_NAME}.STATUS_CATEGORY ;;
 
   dimension: id {
     primary_key: yes
@@ -33,13 +33,8 @@ view: board_core {
     sql: ${TABLE}.NAME ;;
   }
 
-  dimension: type {
-    type: string
-    sql: ${TABLE}.TYPE ;;
-  }
-
   measure: count {
     type: count
-    drill_fields: [id, name, sprint.count]
+    drill_fields: [id, name, status.count]
   }
 }

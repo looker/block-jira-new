@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/field_option.view"
+include: "//@{CONFIG_PROJECT_NAME}/board.view"
 
-view: field_option {
-  extends: [field_option_config]
+view: board {
+  extends: [board_config]
 }
 
-view: field_option_core {
+view: board_core {
   extension: required
-  sql_table_name: @{SCHEMA_NAME}.field_option ;;
+  sql_table_name: @{SCHEMA_NAME}.BOARD ;;
 
   dimension: id {
     primary_key: yes
@@ -16,6 +16,7 @@ view: field_option_core {
 
   dimension_group: _fivetran_synced {
     type: time
+    hidden: yes
     timeframes: [
       raw,
       time,
@@ -33,16 +34,13 @@ view: field_option_core {
     sql: ${TABLE}.NAME ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: [detail*]
+  dimension: type {
+    type: string
+    sql: ${TABLE}.TYPE ;;
   }
 
-  # ----- Sets of fields for drilling ------
-  set: detail {
-    fields: [
-      id,
-      name,
-    ]
+  measure: count {
+    type: count
+    drill_fields: [id, name, sprint.count]
   }
 }

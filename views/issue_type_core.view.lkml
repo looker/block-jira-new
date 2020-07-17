@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/resolution.view"
+include: "//@{CONFIG_PROJECT_NAME}/issue_type.view"
 
-view: resolution {
-  extends: [resolution_config]
+view: issue_type {
+  extends: [issue_type_config]
 }
 
-view: resolution_core {
+view: issue_type_core {
   extension: required
-  sql_table_name: @{SCHEMA_NAME}.resolution ;;
+  sql_table_name: @{SCHEMA_NAME}.ISSUE_TYPE ;;
 
   dimension: id {
     primary_key: yes
@@ -16,6 +16,7 @@ view: resolution_core {
 
   dimension_group: _fivetran_synced {
     type: time
+    hidden:  yes
     timeframes: [
       raw,
       time,
@@ -36,6 +37,16 @@ view: resolution_core {
   dimension: name {
     type: string
     sql: ${TABLE}.NAME ;;
+  }
+
+  dimension: subtask {
+    type: yesno
+    sql: ${TABLE}.SUBTASK ;;
+  }
+
+  dimension: is_bug {
+    type: yesno
+    sql: ${name} = 'Bug' ;;
   }
 
   measure: count {

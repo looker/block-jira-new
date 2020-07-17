@@ -6,7 +6,7 @@ view: user {
 
 view: user_core {
   extension: required
-  sql_table_name: @{SCHEMA_NAME}.user ;;
+  sql_table_name: @{SCHEMA_NAME}.USER ;;
 
   dimension: id {
     primary_key: yes

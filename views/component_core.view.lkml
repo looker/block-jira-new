@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/issue_type.view"
+include: "//@{CONFIG_PROJECT_NAME}/component.view"
 
-view: issue_type {
-  extends: [issue_type_config]
+view: component {
+  extends: [component_config]
 }
 
-view: issue_type_core {
+view: component_core {
   extension: required
-  sql_table_name: @{SCHEMA_NAME}.issue_type ;;
+  sql_table_name: @{SCHEMA_NAME}.COMPONENT ;;
 
   dimension: id {
     primary_key: yes
@@ -38,18 +38,14 @@ view: issue_type_core {
     sql: ${TABLE}.NAME ;;
   }
 
-  dimension: subtask {
-    type: yesno
-    sql: ${TABLE}.SUBTASK ;;
-  }
-
-  dimension: is_bug {
-    type: yesno
-    sql: ${name} = 'Bug' ;;
+  dimension: project_id {
+    type: number
+    # hidden: yes
+    sql: ${TABLE}.PROJECT_ID ;;
   }
 
   measure: count {
     type: count
-    drill_fields: [id, name]
+    drill_fields: [id, name, project.id, project.name]
   }
 }

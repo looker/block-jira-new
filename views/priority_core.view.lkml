@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/project.view"
+include: "//@{CONFIG_PROJECT_NAME}/priority.view"
 
-view: project {
-  extends: [project_config]
+view: priority {
+  extends: [priority_config]
 }
 
-view: project_core {
+view: priority_core {
   extension: required
-  sql_table_name: @{SCHEMA_NAME}.project ;;
+  sql_table_name: @{SCHEMA_NAME}.PRIORITY ;;
 
   dimension: id {
     primary_key: yes
@@ -14,8 +14,9 @@ view: project_core {
     sql: ${TABLE}.ID ;;
   }
 
-  dimension_group: _FIVETRAN_SYNCED {
+  dimension_group: _fivetran_synced {
     type: time
+    hidden:  yes
     timeframes: [
       raw,
       time,
@@ -25,7 +26,7 @@ view: project_core {
       quarter,
       year
     ]
-    sql: ${TABLE}._fivetran_synced ;;
+    sql: ${TABLE}._FIVETRAN_SYNCED ;;
   }
 
   dimension: description {
@@ -36,15 +37,11 @@ view: project_core {
   dimension: name {
     type: string
     sql: ${TABLE}.NAME ;;
-  }
-
-  dimension: project_category_id {
-    type: number
-    sql: ${TABLE}.PROJECT_CATEGORY_ID ;;
+    label: "Priority"
   }
 
   measure: count {
     type: count
-    drill_fields: [id, name, component.count, issue_project_history.count, version.count]
+    drill_fields: [id, name, issue_priority_history.count]
   }
 }

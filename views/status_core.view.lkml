@@ -6,7 +6,7 @@ view: status {
 
 view: status_core {
   extension: required
-  sql_table_name: @{SCHEMA_NAME}.status ;;
+  sql_table_name: @{SCHEMA_NAME}.STATUS ;;
 
   dimension: id {
     primary_key: yes
