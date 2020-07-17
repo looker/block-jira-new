@@ -6,7 +6,7 @@ view: epic {
 
 view: epic_core {
   extension: required
-  sql_table_name: @{SCHEMA_NAME}.epic ;;
+  sql_table_name: @{SCHEMA_NAME}.EPIC ;;
 
   dimension: id {
     primary_key: yes

@@ -6,7 +6,7 @@ view: comment {
 
 view: comment_core {
   extension: required
-  sql_table_name: @{SCHEMA_NAME}.comment ;;
+  sql_table_name: @{SCHEMA_NAME}.COMMENT ;;
 
   dimension: id {
     primary_key: yes
@@ -31,11 +31,6 @@ view: comment_core {
   dimension: author_id {
     type: string
     sql: ${TABLE}.AUTHOR_ID ;;
-  }
-
-  dimension: body {
-    type: string
-    sql: ${TABLE}.BODY ;;
   }
 
   dimension_group: created {

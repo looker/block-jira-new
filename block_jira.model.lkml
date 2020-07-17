@@ -1,6 +1,6 @@
 connection: "@{CONNECTION_NAME}"
 
-include: "*.view"
+include: "views/*.view"
 include: "*.dashboard"
 include: "*.explore"
 
@@ -12,10 +12,6 @@ persist_with: fivetran_datagroup
 
 explore: sprint {
   extends: [sprint_config]
-}
-
-explore: version {
-  extends: [version_config]
 }
 
 explore: issue {

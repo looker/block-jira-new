@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/priority.view"
+include: "//@{CONFIG_PROJECT_NAME}/resolution.view"
 
-view: priority {
-  extends: [priority_config]
+view: resolution {
+  extends: [resolution_config]
 }
 
-view: priority_core {
+view: resolution_core {
   extension: required
-  sql_table_name: @{SCHEMA_NAME}.priority ;;
+  sql_table_name: @{SCHEMA_NAME}.RESOLUTION ;;
 
   dimension: id {
     primary_key: yes
@@ -36,11 +36,10 @@ view: priority_core {
   dimension: name {
     type: string
     sql: ${TABLE}.NAME ;;
-    label: "Priority"
   }
 
   measure: count {
     type: count
-    drill_fields: [id, name, issue_priority_history.count]
+    drill_fields: [id, name]
   }
 }

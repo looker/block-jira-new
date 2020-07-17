@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/component.view"
+include: "//@{CONFIG_PROJECT_NAME}/field_option.view"
 
-view: component {
-  extends: [component_config]
+view: field_option {
+  extends: [field_option_config]
 }
 
-view: component_core {
+view: field_option_core {
   extension: required
-  sql_table_name: @{SCHEMA_NAME}.component ;;
+  sql_table_name: @{SCHEMA_NAME}.FIELD_OPTION ;;
 
   dimension: id {
     primary_key: yes
@@ -28,24 +28,21 @@ view: component_core {
     sql: ${TABLE}._FIVETRAN_SYNCED ;;
   }
 
-  dimension: description {
-    type: string
-    sql: ${TABLE}.DESCRIPTION ;;
-  }
-
   dimension: name {
     type: string
     sql: ${TABLE}.NAME ;;
   }
 
-  dimension: project_id {
-    type: number
-    # hidden: yes
-    sql: ${TABLE}.PROJECT_ID ;;
-  }
-
   measure: count {
     type: count
-    drill_fields: [id, name, project.id, project.name]
+    drill_fields: [detail*]
+  }
+
+  # ----- Sets of fields for drilling ------
+  set: detail {
+    fields: [
+      id,
+      name,
+    ]
   }
 }

@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/version.view"
+include: "//@{CONFIG_PROJECT_NAME}/sprint.view"
 
-view: version {
-  extends: [version_config]
+view: sprint {
+  extends: [sprint_config]
 }
 
-view: version_core {
+view: sprint_core {
   extension: required
-  sql_table_name: @{SCHEMA_NAME}.version ;;
+  sql_table_name: @{SCHEMA_NAME}.SPRINT ;;
 
   dimension: id {
     primary_key: yes
@@ -28,14 +28,38 @@ view: version_core {
     sql: ${TABLE}._FIVETRAN_SYNCED ;;
   }
 
-  dimension: archived {
-    type: yesno
-    sql: ${TABLE}.ARCHIVED ;;
+  dimension: board_id {
+    type: number
+    # hidden: yes
+    sql: ${TABLE}.BOARD_ID ;;
   }
 
-  dimension: description {
-    type: string
-    sql: ${TABLE}.DESCRIPTION ;;
+  dimension_group: complete {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.COMPLETE_DATE ;;
+  }
+
+  dimension_group: end {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.END_DATE ;;
   }
 
   dimension: name {
@@ -43,50 +67,18 @@ view: version_core {
     sql: ${TABLE}.NAME ;;
   }
 
-  dimension: overdue {
-    type: yesno
-    sql: ${TABLE}.OVERDUE ;;
-  }
-
-  dimension: project_id {
-    type: number
-    # hidden: yes
-    sql: ${TABLE}.PROJECT_ID ;;
-  }
-
-  dimension_group: release {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.RELEASE_DATE ;;
-  }
-
-  dimension: released {
-    type: yesno
-    sql: ${TABLE}.RELEASED ;;
-  }
-
   dimension_group: start {
     type: time
     timeframes: [
       raw,
+      time,
       date,
       week,
       month,
       quarter,
       year
     ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.START_DATE ;;
+    sql: ${TABLE}.START_DATE  ;;
   }
 
   measure: count {
@@ -94,13 +86,21 @@ view: version_core {
     drill_fields: [detail*]
   }
 
+  # Custom Fields
+  dimension: duration_days {
+    type: number
+    sql: timestamp_diff(${end_raw}, ${start_raw}, day) ;;
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
       id,
       name,
-      project.id,
-      project.name
+      board.id,
+      board.name,
+      issue_sprint.count,
+      issue_sprint_history.count
     ]
   }
 }

@@ -8,12 +8,12 @@ constant: CONFIG_PROJECT_NAME {
 }
 
 constant: CONNECTION_NAME {
-  value: "looker_app"
+  value: "brick-layer"
   export: override_required
 }
 
 constant: SCHEMA_NAME {
-  value: "jira_for_looker"
+  value: "jira_initial"
   export: override_required
 }
 
