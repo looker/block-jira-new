@@ -19,7 +19,7 @@ view: sla_core {
     sql: ${TABLE}.breached ;;
   }
 
-  dimension: elapsed_time {
+  dimension: elapsed_time_dim {
     type: number
     sql: ${TABLE}.elapsed_time ;;
   }
@@ -32,6 +32,7 @@ view: sla_core {
   dimension: id {
     type: number
     sql: ${TABLE}.id ;;
+    hidden: yes
   }
 
   dimension: is_ongoing_cycle {
@@ -42,6 +43,7 @@ view: sla_core {
   dimension: issue_id {
     type: number
     sql: ${TABLE}.issue_id ;;
+    hidden: yes
   }
 
   dimension: paused {
@@ -49,19 +51,22 @@ view: sla_core {
     sql: ${TABLE}.paused ;;
   }
 
-  dimension: remaining_time {
+  dimension: remaining_time_dim {
     type: number
+    hidden: yes
     sql: ${TABLE}.remaining_time ;;
   }
 
-  dimension: start_time {
-    type: string
+  dimension_group: start_time {
+    type: time
     sql: ${TABLE}.start_time ;;
+    timeframes: [date, year, quarter, month_name]
   }
 
-  dimension: stop_time {
-    type: string
+  dimension_group: stop_time {
+    type: time
     sql: ${TABLE}.stop_time ;;
+    timeframes: [date, year, quarter, month_name]
   }
 
   dimension: within_calendar_hours {
@@ -69,8 +74,15 @@ view: sla_core {
     sql: ${TABLE}.within_calendar_hours ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: [sla_id]
+  measure: remaining_time {
+    type: sum
+    sql: ${remaining_time_dim} ;;
+    value_format_name: decimal_1
+  }
+
+  measure: elapsed_time {
+    type: sum
+    sql: ${elapsed_time_dim} ;;
+    value_format_name: decimal_1
   }
 }

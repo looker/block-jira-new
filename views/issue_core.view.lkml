@@ -52,7 +52,7 @@ view: issue_core {
   }
 
   dimension: status {
-    hidden: yes
+    #hidden: yes
     type: number
     sql: ${TABLE}.status ;;
   }
@@ -72,10 +72,13 @@ view: issue_core {
     sql: ${TABLE}.parent_id ;;
   }
 
+  dimension: epic_link {
+    type: number
+    sql: ${TABLE}.epic_link ;;
+  }
+
   measure: count {
     type: count
-
-    drill_fields: [issue_open_drill_set*]
   }
 
   measure: number_of_open_issues {
@@ -83,79 +86,18 @@ view: issue_core {
 
     filters: {
       field: status_category.name
-      value: "-Done"
+      value: "-Closed"
     }
-
-    drill_fields: [issue_open_drill_set*]
   }
 
-#   measure: number_of_open_issues_this_month {
-#     type: count
-#
-#     filters: {
-#       field: status_category.name
-#       value: "-Done"
-#     }
-#     filters: {
-#       field: issue.created_date
-#       value: "this month"
-#     }
-#
-#     drill_fields: [issue_open_drill_set*]
-#   }
+  measure: number_of_closed_issues {
+    type: count
 
-#   measure: number_of_resolved_issues {
-#     type: count
-#
-#     filters: {
-#       field: issue.resolved_date
-#       value: "-NULL"
-#     }
-#
-#     drill_fields: [issue_open_drill_set*]
-#   }
+    filters: {
+      field: status_category.name
+      value: "Closed"
+    }
+  }
 
-
-#   measure: number_of_issues_resolved_this_month {
-#     type: count
-#
-#     filters: {
-#       field: issue.resolved_date
-#       value: "this month"
-#     }
-#
-#     drill_fields: [issue_closed_drill_set*]
-#   }
-
-#   measure: number_of_issues_resolved_last_month {
-#     type: count
-#
-#     filters: {
-#       field: issue.resolved_date
-#       value: "last month"
-#     }
-#
-#     drill_fields: [issue_closed_drill_set*]
-#   }
-
-  # ----- Sets of fields for drilling ------
-  #set: detail {
-  #  fields: [
-  #    external_issue_id,
-  #  ]
-  #}
-
-  # set: issue_open_drill_set {
-  #   fields: [key, created_date, status_category.name, assignee]
-  # }
-
-  # set: issue_closed_drill_set {
-  #   fields: [key, resolved_date, assignee]
-  # }
-
-
-  # set: issue_exclusion_set {
-  #   fields: [number_of_open_issues, number_of_open_issues_this_month, number_of_issues_closed_this_month, number_of_issues_closed_last_month]
-  # }
 
 }

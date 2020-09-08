@@ -30,6 +30,7 @@ view: comment_core {
 
   dimension: author_id {
     type: string
+    hidden: yes
     sql: ${TABLE}.AUTHOR_ID ;;
   }
 
@@ -49,13 +50,14 @@ view: comment_core {
 
   dimension: issue_id {
     type: number
-    # hidden: yes
+    hidden: yes
     sql: ${TABLE}.ISSUE_ID ;;
   }
 
   dimension: update_author_id {
     type: string
     sql: ${TABLE}.UPDATE_AUTHOR_ID ;;
+    hidden: yes
   }
 
   dimension_group: updated {

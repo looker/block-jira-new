@@ -1,7 +1,7 @@
 include: "//@{CONFIG_PROJECT_NAME}/project_role_actor.view"
 
 view: project_role_actor {
-  extends: [project_role_config]
+  extends: [project_role_actor_config]
 }
 
 view: project_role_actor_core {

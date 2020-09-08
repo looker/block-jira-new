@@ -12,6 +12,7 @@ view: project_category_core {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+    hidden: yes
   }
 
   dimension: description {
