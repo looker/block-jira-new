@@ -1,0 +1,82 @@
+include: "//@{CONFIG_PROJECT_NAME}/worklog.view"
+
+view: worklog {
+  extends: [worklog_config]
+}
+
+view: worklog_core {
+  extension: required
+  sql_table_name: @{SCHEMA_NAME}.WORKLOG ;;
+
+  dimension: id {
+    primary_key: yes
+    type: number
+    sql: ${TABLE}.id ;;
+  }
+
+  dimension: author_id {
+    type: number
+    sql: ${TABLE}.author_id ;;
+  }
+
+  dimension: comment {
+    type: string
+    sql: ${TABLE}.comment ;;
+  }
+
+  dimension: issue_id {
+    type: number
+    sql: ${TABLE}.issue_id ;;
+    hidden: yes
+  }
+
+  dimension_group: started {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.started ;;
+  }
+
+  dimension: time_spend_seconds {
+    type: number
+    sql: ${TABLE}.time_spend_seconds ;;
+  }
+
+  dimension: update_author_id {
+    type: number
+    sql: ${TABLE}.update_author_id ;;
+    hidden: yes
+  }
+
+  dimension_group: updated {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.updated ;;
+  }
+
+  measure: count {
+    type: count
+    drill_fields: [id]
+  }
+
+  measure: avg_minutes_spent {
+    type: average
+    sql: ${time_spend_seconds} / 60 ;;
+    value_format_name: decimal_1
+  }
+}

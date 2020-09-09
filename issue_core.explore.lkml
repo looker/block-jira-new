@@ -12,6 +12,22 @@ explore: issue_core {
     sql_on: ${issue_board.board_id} = ${board.id} ;;
     relationship: one_to_many
   }
+  join: project_board {
+    fields: []
+    type: left_outer
+    sql_on: ${board.id} = ${project_board.board_id} ;;
+    relationship: one_to_many
+  }
+  join: project {
+    type: left_outer
+    sql_on:  ${project_board.project_id} = ${project.id}  ;;
+    relationship: one_to_many
+  }
+  join: sla {
+    type: left_outer
+    sql_on: ${issue.id} = ${sla.issue_id} ;;
+    relationship: many_to_one
+  }
   join: sprint {
     type: left_outer
     sql_on: ${board.id} = ${sprint.board_id} ;;
@@ -29,12 +45,12 @@ explore: issue_core {
   }
   join:  status {
     type:  left_outer
-    sql_on: ${issue.id} = ${status.id} ;;
+    sql_on: ${issue.status} = ${status.id} ;;
     relationship: many_to_one
   }
   join:  resolution {
     type:  left_outer
-    sql_on: ${issue.id} = ${resolution.id} ;;
+    sql_on: ${issue.resolution} = ${resolution.id} ;;
     relationship: many_to_one
   }
   join:  status_category {
@@ -45,6 +61,11 @@ explore: issue_core {
   join: comment {
     type: left_outer
     sql_on: ${issue.id} = ${comment.issue_id} ;;
+    relationship: one_to_many
+  }
+  join: worklog {
+    type: left_outer
+    sql_on: ${issue.id} = ${worklog.issue_id} ;;
     relationship: one_to_many
   }
 

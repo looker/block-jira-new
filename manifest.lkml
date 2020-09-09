@@ -3,7 +3,7 @@ project_name: "block-jira"
 ################ Constants ################
 
 constant: CONFIG_PROJECT_NAME {
-  value: "block-jira-config"
+  value: "block-jira-new-config"
   export: override_required
 }
 
@@ -13,7 +13,7 @@ constant: CONNECTION_NAME {
 }
 
 constant: SCHEMA_NAME {
-  value: "jira_initial"
+  value: "jira"
   export: override_required
 }
 

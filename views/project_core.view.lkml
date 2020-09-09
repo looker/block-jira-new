@@ -17,6 +17,7 @@ view: project_core {
   dimension: lead_id {
     type: number
     sql: ${TABLE}.LEAD_ID ;;
+    hidden: yes
   }
 
   dimension_group: _FIVETRAN_SYNCED {
@@ -46,6 +47,7 @@ view: project_core {
   dimension: project_category_id {
     type: number
     sql: ${TABLE}.PROJECT_CATEGORY_ID ;;
+    hidden: yes
   }
 
   measure: count {

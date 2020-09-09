@@ -9,7 +9,7 @@ explore: project_core {
   join: user {
     type:  left_outer
     sql_on: ${project.lead_id} = ${user.id} ;;
-    relationship: many_to_one
+    relationship: many_to_many
   }
   join: project_role_actor {
     type:  left_outer
@@ -19,12 +19,12 @@ explore: project_core {
   join: version {
     type:  left_outer
     sql_on: ${project.id} = ${version.project_id} ;;
-    relationship: many_to_one
+    relationship: one_to_many
   }
   join: component {
     type:  left_outer
     sql_on: ${project.id} = ${component.project_id} ;;
-    relationship: many_to_one
+    relationship: one_to_many
   }
   join: project_board {
     fields: []
@@ -35,7 +35,7 @@ explore: project_core {
   join: board {
     type: left_outer
     sql_on: ${project_board.board_id} = ${board.id} ;;
-    relationship: one_to_many
+    relationship: one_to_one
   }
   join: issue_board {
     fields: []
