@@ -69,6 +69,12 @@ view: worklog_core {
     sql: ${TABLE}.updated ;;
   }
 
+  measure: first_update_time {
+    type: date
+    sql: MIN(${updated_time} ;;
+  }
+
+
   measure: count {
     type: count
     drill_fields: [id]
@@ -77,6 +83,12 @@ view: worklog_core {
   measure: avg_minutes_spent {
     type: average
     sql: ${time_spend_seconds} / 60 ;;
+    value_format_name: decimal_1
+  }
+
+  measure: total_minutes_spent {
+    type: sum
+    sql: ${time_spend_seconds} ;;
     value_format_name: decimal_1
   }
 }
