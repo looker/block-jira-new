@@ -70,8 +70,8 @@ view: worklog_core {
   }
 
   measure: first_update_time {
-    type: date
-    sql: MIN(${updated_time} ;;
+    type: date_time
+    sql: MIN(${updated_raw}) ;;
   }
 
 
