@@ -78,6 +78,10 @@ view: sla_core {
     type: sum
     sql: ${remaining_time_dim} ;;
     value_format_name: decimal_1
+    html: {% if value < 0 %} <p style="color: red">{{ rendered_value }}</p>
+    {% elsif value == 0 %} <p style="color: orange">{{ rendered_value }}</p>
+    {% else %} {{rendered_value}}
+    {% endif %} ;;
   }
 
   measure: elapsed_time {
