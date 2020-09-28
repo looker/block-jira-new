@@ -68,5 +68,14 @@ explore: issue_core {
     sql_on: ${issue.id} = ${worklog.issue_id} ;;
     relationship: one_to_many
   }
+  join: user {
+    type: left_outer
+    sql_on: ${worklog.author_id} = ${user.id};;
+  }
+  join: epic {
+    type: left_outer
+    sql_on:  ${issue.epic_link} = ${epic.id} ;;
+    relationship: one_to_many
+  }
 
 }
