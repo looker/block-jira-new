@@ -24,6 +24,9 @@
     defaults_version: 1
     listen:
       Project: project.name
+      Created Time: worklog.first_update_time
+      Epic: epic.name
+      Sprint: sprint.name
     row: 0
     col: 0
     width: 4
@@ -50,6 +53,9 @@
     defaults_version: 1
     listen:
       Project: project.name
+      Created Time: worklog.first_update_time
+      Epic: epic.name
+      Sprint: sprint.name
     row: 4
     col: 0
     width: 4
@@ -58,8 +64,9 @@
     name: Longest Running Issues
     model: block_jira
     explore: issue
-    type: table
-    fields: [issue.key, sla.elapsed_time, issue_type.name, priority.name]
+    type: looker_grid
+    fields: [issue.key, sla.elapsed_time, issue_type.name, priority.name, worklog.started_date,
+      user.name]
     filters:
       status.name: "-Closed,-Resolved,-Done"
     sorts: [sla.elapsed_time desc]
@@ -69,12 +76,17 @@
         _type_hint: number, is_disabled: true}]
     show_view_names: false
     show_row_numbers: true
-    truncate_column_names: false
+    transpose: false
+    truncate_text: true
     hide_totals: false
     hide_row_totals: false
+    size_to_fit: true
     table_theme: gray
     limit_displayed_rows: false
     enable_conditional_formatting: true
+    header_text_alignment: left
+    header_font_size: '12'
+    rows_font_size: '12'
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     color_application:
@@ -82,10 +94,20 @@
       palette_id: looker_classic
       options:
         steps: 5
+    show_sql_query_menu_options: false
+    show_totals: true
+    show_row_totals: true
+    series_labels:
+      issue_type.name: Issue Type
+      user.name: Assignee
+    series_cell_visualizations:
+      sla.elapsed_time:
+        is_active: true
     conditional_formatting: [{type: along a scale..., value: !!null '', background_color: "#62bad4",
         font_color: !!null '', color_application: {collection_id: legacy, palette_id: legacy_diverging1,
           options: {steps: 5, reverse: true, stepped: true}}, bold: false, italic: false,
         strikethrough: false, fields: [sla.elapsed_time]}]
+    truncate_column_names: false
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_y_axis_labels: true
@@ -116,19 +138,21 @@
     defaults_version: 1
     listen:
       Project: project.name
+      Created Time: worklog.first_update_time
+      Epic: epic.name
+      Sprint: sprint.name
     row: 16
     col: 0
     width: 24
     height: 9
-  - title: Avg Minutes to Resolution by Issue Type
-    name: Avg Minutes to Resolution by Issue Type
+  - title: Issue Count and Avg Minutes Spent by Assignee
+    name: Issue Count and Avg Minutes Spent by Assignee
     model: block_jira
     explore: issue
     type: looker_bar
-    fields: [issue_type.name, worklog.avg_minutes_spent]
+    fields: [worklog.avg_minutes_spent, issue.count, user.name]
     filters:
       issue_type.name: "-NULL"
-    sorts: [issue_type.name]
     limit: 10
     column_limit: 50
     x_axis_gridlines: false
@@ -148,7 +172,7 @@
     stacking: ''
     limit_displayed_rows: false
     legend_position: center
-    point_style: none
+    point_style: circle
     show_value_labels: false
     label_density: 25
     x_axis_scale: auto
@@ -167,12 +191,18 @@
             id: issue.avg_days_to_resolve_issues_hours, name: Avg Number of Days to
               Resolve Issues}], showLabels: false, showValues: true, unpinAxis: false,
         tickDensity: default, tickDensityCustom: 5, type: linear}]
-    series_types: {}
+    series_types:
+      issue.count: line
     series_colors:
-      worklog.avg_minutes_spent: "#34A852"
+      worklog.avg_minutes_spent: "#FBBC04"
+    series_labels:
+      issue.count: Issue Count
     defaults_version: 1
     listen:
       Project: project.name
+      Created Time: worklog.first_update_time
+      Epic: epic.name
+      Sprint: sprint.name
     row: 8
     col: 16
     width: 8
@@ -250,6 +280,9 @@
     defaults_version: 1
     listen:
       Project: project.name
+      Created Time: worklog.first_update_time
+      Epic: epic.name
+      Sprint: sprint.name
     row: 0
     col: 4
     width: 20
@@ -296,6 +329,9 @@
     series_types: {}
     listen:
       Project: project.name
+      Created Time: worklog.first_update_time
+      Epic: epic.name
+      Sprint: sprint.name
     row: 8
     col: 8
     width: 8
@@ -342,6 +378,9 @@
     label_type: labPer
     listen:
       Project: project.name
+      Created Time: worklog.first_update_time
+      Epic: epic.name
+      Sprint: sprint.name
     row: 8
     col: 0
     width: 8
@@ -360,3 +399,33 @@
     explore: issue
     listens_to_filters: []
     field: project.name
+  - name: Created Time
+    title: Created Time
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    model: block_jira
+    explore: issue
+    listens_to_filters: []
+    field: worklog.first_update_time
+  - name: Epic
+    title: Epic
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    model: block_jira
+    explore: issue
+    listens_to_filters: []
+    field: epic.name
+  - name: Sprint
+    title: Sprint
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    model: block_jira
+    explore: issue
+    listens_to_filters: []
+    field: sprint.name

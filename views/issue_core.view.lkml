@@ -77,6 +77,18 @@ view: issue_core {
     sql: ${TABLE}.epic_link ;;
   }
 
+  dimension: needs_triage {
+    type: yesno
+    description: "By default, issues with no priority will be labeled as needing triage. This defaul can by modified in the config project. "
+    sql: CASE WHEN ${priority.name} IS NULL THEN true ELSE false END ;;
+  }
+
+  dimension: is_approaching_sla {
+    description: "Wheather the SLA is less than 30 days away."
+    type: yesno
+    sql: CASE WHEN (${sla.remaining_time_dim}/ (1000 * 60 * 60 * 24)) < 30 THEN true ELSE false END ;;
+  }
+
   measure: count {
     type: count
   }

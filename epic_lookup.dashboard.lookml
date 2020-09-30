@@ -129,7 +129,7 @@
     row: 6
     col: 12
     width: 12
-    height: 12
+    height: 9
   - title: Issues by Status and Type
     name: Issues by Status and Type
     model: block_jira
@@ -186,7 +186,7 @@
     row: 6
     col: 0
     width: 12
-    height: 12
+    height: 9
   - title: In Progress Issues
     name: In Progress Issues
     model: block_jira
@@ -220,15 +220,18 @@
     series_cell_visualizations:
       sla.remaining_time:
         is_active: true
+        palette:
+          palette_id: gooooooooogle-diverging-0
+          collection_id: gooooooooogle
     truncate_column_names: false
     series_types: {}
     defaults_version: 1
     listen:
       Epic: epic.name
-    row: 18
+    row: 15
     col: 0
     width: 12
-    height: 8
+    height: 7
   - title: Resolved Issues
     name: Resolved Issues
     model: block_jira
@@ -262,15 +265,18 @@
     series_cell_visualizations:
       sla.remaining_time:
         is_active: true
+        palette:
+          palette_id: gooooooooogle-diverging-0
+          collection_id: gooooooooogle
     truncate_column_names: false
     series_types: {}
     defaults_version: 1
     listen:
       Epic: epic.name
-    row: 18
+    row: 15
     col: 12
     width: 12
-    height: 8
+    height: 7
   - title: Number of Issues
     name: Number of Issues
     model: block_jira
@@ -295,12 +301,12 @@
     col: 12
     width: 6
     height: 3
-  - title: Avg Minutes Spent
-    name: Avg Minutes Spent
+  - title: Total Minutes Spent
+    name: Total Minutes Spent
     model: block_jira
     explore: epic
     type: single_value
-    fields: [worklog.avg_minutes_spent]
+    fields: [worklog.total_minutes_spent]
     limit: 500
     query_timezone: America/Los_Angeles
     custom_color_enabled: true
