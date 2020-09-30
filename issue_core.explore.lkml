@@ -71,6 +71,7 @@ explore: issue_core {
   join: user {
     type: left_outer
     sql_on: ${worklog.author_id} = ${user.id};;
+    relationship: many_to_one
   }
   join: epic {
     type: left_outer

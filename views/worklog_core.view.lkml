@@ -70,10 +70,11 @@ view: worklog_core {
   }
 
   measure: first_update_time {
+    label: "Created Time"
+    description: "The first date this issue was updated in Jira."
     type: date_time
     sql: MIN(${updated_raw}) ;;
   }
-
 
   measure: count {
     type: count

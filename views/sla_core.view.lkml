@@ -9,7 +9,6 @@ view: sla_core {
   sql_table_name: @{SCHEMA_NAME}.SLA ;;
 
   dimension: sla_id {
-    primary_key: yes
     type: number
     sql: ${TABLE}.sla_id ;;
   }
@@ -21,6 +20,7 @@ view: sla_core {
 
   dimension: elapsed_time_dim {
     type: number
+    hidden: yes
     sql: ${TABLE}.elapsed_time ;;
   }
 
@@ -31,6 +31,7 @@ view: sla_core {
 
   dimension: id {
     type: number
+    primary_key: yes
     sql: ${TABLE}.id ;;
     hidden: yes
   }
@@ -54,7 +55,7 @@ view: sla_core {
   dimension: remaining_time_dim {
     type: number
     hidden: yes
-    sql: ${TABLE}.remaining_time ;;
+    sql: ${TABLE}.remaining_time;;
   }
 
   dimension_group: start_time {
@@ -76,7 +77,8 @@ view: sla_core {
 
   measure: remaining_time {
     type: sum
-    sql: ${remaining_time_dim} ;;
+    description: "Total number of days remaining"
+    sql: (${remaining_time_dim})/ (1000 * 60 * 60 * 24) ;;
     value_format_name: decimal_1
     html: {% if value < 0 %} <p style="color: red">{{ rendered_value }}</p>
     {% elsif value == 0 %} <p style="color: orange">{{ rendered_value }}</p>

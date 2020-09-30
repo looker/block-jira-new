@@ -24,6 +24,8 @@
     defaults_version: 1
     listen:
       Project: project.name
+      Epic: epic.name
+      Created Time: worklog.first_update_time
     row: 0
     col: 0
     width: 6
@@ -51,6 +53,8 @@
     defaults_version: 1
     listen:
       Project: project.name
+      Epic: epic.name
+      Created Time: worklog.first_update_time
     row: 3
     col: 0
     width: 6
@@ -61,11 +65,10 @@
     explore: issue
     type: looker_bar
     fields: [issue.key, comment.count, priority.name]
-    pivots: [priority.name]
     filters:
       status.name: "-Closed"
-    sorts: [priority.name]
-    limit: 500
+    sorts: [comment.count desc]
+    limit: 10
     x_axis_gridlines: false
     y_axis_gridlines: false
     show_view_names: false
@@ -126,10 +129,12 @@
     defaults_version: 1
     listen:
       Project: project.name
-    row: 17
-    col: 0
-    width: 13
-    height: 10
+      Epic: epic.name
+      Created Time: worklog.first_update_time
+    row: 9
+    col: 13
+    width: 11
+    height: 7
   - title: Issues by Status
     name: Issues by Status
     model: block_jira
@@ -201,6 +206,8 @@
     defaults_version: 1
     listen:
       Project: project.name
+      Epic: epic.name
+      Created Time: worklog.first_update_time
     row: 0
     col: 6
     width: 18
@@ -210,11 +217,12 @@
     model: block_jira
     explore: issue
     type: looker_grid
-    fields: [issue.key, priority.name, worklog.started_date, sprint.name, project.name]
+    fields: [issue.key, priority.name, worklog.started_date, sprint.name, sla.remaining_time,
+      sla.stop_time_date]
     filters:
       issue_type.is_bug: 'Yes'
       status_category.name: "-Done"
-    sorts: [issue.key]
+    sorts: [sla.remaining_time]
     limit: 500
     column_limit: 50
     show_view_names: true
@@ -226,7 +234,7 @@
     size_to_fit: true
     table_theme: gray
     limit_displayed_rows: false
-    enable_conditional_formatting: false
+    enable_conditional_formatting: true
     header_text_alignment: left
     header_font_size: '12'
     rows_font_size: '12'
@@ -237,31 +245,64 @@
     show_row_totals: true
     series_labels:
       priority.name: Priority
+    conditional_formatting: [{type: along a scale..., value: !!null '', background_color: "#4285F4",
+        font_color: !!null '', color_application: {collection_id: gooooooooogle, palette_id: gooooooooogle-sequential-0},
+        bold: false, italic: false, strikethrough: false, fields: []}]
     series_types: {}
     truncate_column_names: false
     defaults_version: 1
     listen:
       Project: project.name
-    row: 17
-    col: 13
-    width: 11
-    height: 17
-  - title: Open Bugs by SLA Remaining Time
-    name: Open Bugs by SLA Remaining Time
+      Epic: epic.name
+      Created Time: worklog.first_update_time
+    row: 23
+    col: 0
+    width: 24
+    height: 5
+  - title: Open Bugs Approaching SLA
+    name: Open Bugs Approaching SLA
     model: block_jira
     explore: issue
-    type: looker_area
-    fields: [sla.remaining_time, issue.key, priority.name]
+    type: looker_grid
+    fields: [issue.key, priority.name, worklog.started_date, user.name, status.name,
+      sla.remaining_time]
     filters:
       issue_type.is_bug: 'Yes'
-      sla.remaining_time: ">0"
       status.name: "-Closed"
-    sorts: [sla.remaining_time, priority.name]
-    limit: 50
+      issue.is_approaching_sla: 'Yes'
+    sorts: [sla.remaining_time, priority.name, issue.key]
+    limit: 10
     column_limit: 50
+    show_view_names: false
+    show_row_numbers: true
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: '12'
+    rows_font_size: '12'
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    color_application:
+      collection_id: 5b121cce-cf79-457c-a52a-9162dc174766
+      palette_id: 55dee055-18cf-4472-9669-469322a6f264
+      options:
+        steps: 5
+    show_sql_query_menu_options: false
+    show_totals: true
+    show_row_totals: true
+    series_labels:
+      user.name: Assignee
+    series_cell_visualizations:
+      sla.remaining_time:
+        is_active: true
     x_axis_gridlines: false
     y_axis_gridlines: true
-    show_view_names: false
     show_y_axis_labels: true
     show_y_axis_ticks: true
     y_axis_tick_density: default
@@ -274,7 +315,6 @@
     plot_size_by_field: false
     trellis: ''
     stacking: normal
-    limit_displayed_rows: false
     legend_position: center
     point_style: none
     show_value_labels: false
@@ -286,11 +326,6 @@
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
-    color_application:
-      collection_id: 5b121cce-cf79-457c-a52a-9162dc174766
-      palette_id: 55dee055-18cf-4472-9669-469322a6f264
-      options:
-        steps: 5
     y_axes: [{label: '', orientation: left, series: [{axisId: issue.number_of_resolved_issues,
             id: issue.number_of_resolved_issues, name: Number of Resolved Issues}],
         showLabels: false, showValues: true, unpinAxis: false, tickDensity: default,
@@ -299,12 +334,19 @@
     ordering: none
     show_null_labels: false
     defaults_version: 1
+    note_state: collapsed
+    note_display: above
+    note_text: This Tile lists open issues with type "Bug" that have SLA remaining
+      time of less than 30 days. The filter logic for "Is Approaching SLA" can be
+      changed in the config project.
     listen:
       Project: project.name
-    row: 9
+      Epic: epic.name
+      Created Time: worklog.first_update_time
+    row: 16
     col: 0
-    width: 24
-    height: 8
+    width: 13
+    height: 7
   - title: Open Bugs by Priority
     name: Open Bugs by Priority
     model: block_jira
@@ -315,7 +357,7 @@
       issue_type.is_bug: 'Yes'
       priority.name: "-NULL"
     sorts: [issue.number_of_open_issues desc]
-    limit: 20
+    limit: 10
     column_limit: 50
     x_axis_gridlines: false
     y_axis_gridlines: true
@@ -359,17 +401,20 @@
     show_null_points: true
     interpolation: linear
     defaults_version: 1
-    listen: {}
-    row: 27
+    listen:
+      Project: project.name
+      Epic: epic.name
+      Created Time: worklog.first_update_time
+    row: 9
     col: 0
     width: 13
     height: 7
-  - title: Avg Time Spend
-    name: Avg Time Spend
+  - title: Total Time Spend
+    name: Total Time Spend
     model: block_jira
     explore: issue
     type: single_value
-    fields: [worklog.avg_minutes_spent]
+    fields: [worklog.total_minutes_spent]
     filters:
       resolution.name: Fixed
     limit: 500
@@ -385,10 +430,101 @@
     defaults_version: 1
     listen:
       Project: project.name
+      Epic: epic.name
+      Created Time: worklog.first_update_time
     row: 6
     col: 0
     width: 6
     height: 3
+  - title: Bugs Needing Triage
+    name: Bugs Needing Triage
+    model: block_jira
+    explore: issue
+    type: looker_grid
+    fields: [issue.key, priority.name, status.name, sla.elapsed_time, worklog.started_date,
+      worklog.first_update_time]
+    filters:
+      issue_type.is_bug: 'Yes'
+      issue.needs_triage: 'Yes'
+    sorts: [worklog.first_update_time]
+    limit: 10
+    column_limit: 50
+    show_view_names: false
+    show_row_numbers: true
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: '12'
+    rows_font_size: '12'
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    color_application:
+      collection_id: 5b121cce-cf79-457c-a52a-9162dc174766
+      palette_id: 55dee055-18cf-4472-9669-469322a6f264
+      options:
+        steps: 5
+    show_sql_query_menu_options: false
+    show_totals: true
+    show_row_totals: true
+    series_labels:
+      user.name: Assignee
+      status.name: Status
+    series_cell_visualizations:
+      sla.remaining_time:
+        is_active: true
+      sla.elapsed_time:
+        is_active: true
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: false
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: normal
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    y_axes: [{label: '', orientation: left, series: [{axisId: issue.number_of_resolved_issues,
+            id: issue.number_of_resolved_issues, name: Number of Resolved Issues}],
+        showLabels: false, showValues: true, unpinAxis: false, tickDensity: default,
+        type: linear}]
+    series_types: {}
+    ordering: none
+    show_null_labels: false
+    defaults_version: 1
+    note_state: collapsed
+    note_display: above
+    note_text: This tile lists open issues with type "Bug" that no priority assigned.
+      The filter logic for "Needs Triage" can be changed in the config project.
+    listen:
+      Project: project.name
+      Epic: epic.name
+      Created Time: worklog.first_update_time
+    row: 16
+    col: 13
+    width: 11
+    height: 7
   filters:
   - name: Project
     title: Project
@@ -403,3 +539,23 @@
     explore: issue
     listens_to_filters: []
     field: project.name
+  - name: Epic
+    title: Epic
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    model: block_jira
+    explore: issue
+    listens_to_filters: []
+    field: epic.name
+  - name: Created Time
+    title: Created Time
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    model: block_jira
+    explore: issue
+    listens_to_filters: []
+    field: worklog.first_update_time
