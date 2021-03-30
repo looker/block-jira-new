@@ -1,7 +1,7 @@
 - dashboard: issues_overview
   title: Issues Overview
   layout: newspaper
-  preferred_viewer: dashboards
+  preferred_viewer: dashboards-next
   elements:
   - title: Open Issues
     name: Open Issues
