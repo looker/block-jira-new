@@ -34,8 +34,3 @@ Understanding the Fivetran implementation of the Jira data model is important fo
 ### Jira Block Structure
 
 The `issue` table is highly customizable.  Administrators can add any additional fields necessary for capturing the data that makes tracking and reporting more effective.  These additional fields can be either Single Select Fields or Multi-Select Fields.  As the names imply, a Single Select Field can only contain one value, and a Multi-Select field can contain several values.  Single Select issue fields are stored in the `issue` table.  Multi-Select fields are stored in separate tables.  For example, an issue may affect several customers, so it is represented by a multi-select field in the Jira UI, and stored in a separate table in the Fivetran Jira schema named `issue_customer_impacted`.
-
-
-### What if I find an error? Suggestions for improvements?
-
-Great! Blocks were designed for continuous improvement through the help of the entire Looker community and we'd love your input. To report an error or improvement recommendation, please reach out to Looker support via email to support@looker.com or via chat to submit a request. Please be as detailed as possible in your explanation and we'll address it as quick as we can.
