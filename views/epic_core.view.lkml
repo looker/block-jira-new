@@ -14,6 +14,11 @@ view: epic_core {
     sql: ${TABLE}.id ;;
   }
 
+  dimension: board_id {
+    type: number
+    sql: ${TABLE}.board_id ;;
+  }
+
   dimension_group: _fivetran_synced {
     type: time
     timeframes: [
@@ -50,6 +55,6 @@ view: epic_core {
 
   measure: count {
     type: count
-    drill_fields: [id, name, issue_epic_link_history.count]
+    drill_fields: [id, name]
   }
 }
