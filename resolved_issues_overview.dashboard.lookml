@@ -1,7 +1,7 @@
 - dashboard: resolved_issues_overview
   title: Resolved Issues Overview
   layout: newspaper
-  preferred_viewer: dashboards
+  preferred_viewer: dashboards-next
   elements:
   - title: Closed Issues
     name: Closed Issues

@@ -1,7 +1,7 @@
 - dashboard: epic_lookup
   title: Epic Lookup
   layout: newspaper
-  preferred_viewer: dashboards
+  preferred_viewer: dashboards-next
   elements:
   - title: Status
     name: Status
