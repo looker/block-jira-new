@@ -12,6 +12,11 @@ explore: issue_core {
     sql_on: ${issue_board.board_id} = ${board.id} ;;
     relationship: one_to_many
   }
+  join: epic {
+    type: left_outer
+    sql_on:  ${board.id} = ${epic.board_id} ;;
+    relationship: one_to_many
+  }
   join: project_board {
     fields: []
     type: left_outer
@@ -73,10 +78,6 @@ explore: issue_core {
     sql_on: ${worklog.author_id} = ${user.id};;
     relationship: many_to_one
   }
-  join: epic {
-    type: left_outer
-    sql_on:  ${issue.epic_link} = ${epic.id} ;;
-    relationship: one_to_many
-  }
+
 
 }

@@ -72,11 +72,6 @@ view: issue_core {
     sql: ${TABLE}.parent_id ;;
   }
 
-  dimension: epic_link {
-    type: number
-    sql: ${TABLE}.epic_link ;;
-  }
-
   dimension: needs_triage {
     type: yesno
     description: "By default, issues with no priority will be labeled as needing triage. This defaul can by modified in the config project. "
