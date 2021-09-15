@@ -39,6 +39,6 @@ view: project_board {
   measure: count {
     type: count
     hidden: yes
-    drill_fields: [id, name, sprint.count]
+    drill_fields: [id, project.name, sprint.count]
   }
 }

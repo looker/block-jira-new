@@ -2,6 +2,8 @@ include: "/views/*view"
 
 explore: project {
 
+  fields: [ALL_FIELDS*,-issue.needs_triage, -issue.is_approaching_sla]
+
   join: project_category {
     type:  left_outer
     sql_on: ${project.project_category_id} = ${project_category.id} ;;
@@ -49,7 +51,16 @@ explore: project {
     sql_on: ${issue_board.issue_id} = ${issue.id} ;;
     relationship: one_to_many
   }
-
+  join:  status {
+    type:  left_outer
+    sql_on: ${issue.status} = ${status.id} ;;
+    relationship: many_to_one
+  }
+  join:  status_category {
+    type:  left_outer
+    sql_on: ${status.status_category_id} = ${status_category.id} ;;
+    relationship: many_to_one
+  }
 
 
 
@@ -86,14 +97,5 @@ explore: project {
   #   sql_on: ${issue.priority} = ${priority.id} ;;
   #   relationship: many_to_one
   # }
-  # join:  status {
-  #   type:  left_outer
-  #   sql_on: ${issue.status} = ${status.id} ;;
-  #   relationship: many_to_one
-  # }
-  # join:  status_category {
-  #   type:  left_outer
-  #   sql_on: ${status.status_category_id} = ${status_category.id} ;;
-  #   relationship: many_to_one
-  # }
+
 }
