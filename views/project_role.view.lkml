@@ -1,12 +1,5 @@
-include: "//@{CONFIG_PROJECT_NAME}/project_category.view"
-
-view: project_category {
-  extends: [project_category_config]
-}
-
-view: project_category_core {
-  extension: required
-  sql_table_name: @{SCHEMA_NAME}.PROJECT_CATEGORY ;;
+view: project_role {
+  sql_table_name: PROJECT_ROLE ;;
 
   dimension: id {
     primary_key: yes
@@ -27,6 +20,6 @@ view: project_category_core {
 
   measure: count {
     type: count
-    drill_fields: [id, name]
+    drill_fields: [id, name, project_role_actor.count]
   }
 }

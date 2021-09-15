@@ -1,12 +1,5 @@
-include: "//@{CONFIG_PROJECT_NAME}/worklog.view"
-
 view: worklog {
-  extends: [worklog_config]
-}
-
-view: worklog_core {
-  extension: required
-  sql_table_name: @{SCHEMA_NAME}.WORKLOG ;;
+  sql_table_name: WORKLOG ;;
 
   dimension: id {
     primary_key: yes

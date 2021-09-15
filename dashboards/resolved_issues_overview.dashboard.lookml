@@ -5,7 +5,7 @@
   elements:
   - title: Closed Issues
     name: Closed Issues
-    model: block_jira
+    model: block_jira_v2
     explore: issue
     type: single_value
     fields: [issue.number_of_closed_issues]
@@ -33,7 +33,7 @@
     height: 4
   - title: Avg Minutes to Issue Resolution
     name: Avg Minutes to Issue Resolution
-    model: block_jira
+    model: block_jira_v2
     explore: issue
     type: single_value
     fields: [worklog.avg_minutes_spent]
@@ -62,7 +62,7 @@
     height: 4
   - title: Longest Running Issues
     name: Longest Running Issues
-    model: block_jira
+    model: block_jira_v2
     explore: issue
     type: looker_grid
     fields: [issue.key, sla.elapsed_time, issue_type.name, priority.name, worklog.started_date,
@@ -147,7 +147,7 @@
     height: 9
   - title: Issue Count and Avg Minutes Spent by Assignee
     name: Issue Count and Avg Minutes Spent by Assignee
-    model: block_jira
+    model: block_jira_v2
     explore: issue
     type: looker_bar
     fields: [worklog.avg_minutes_spent, issue.count, user.name]
@@ -209,7 +209,7 @@
     height: 8
   - title: Closed Issues by Priority
     name: Closed Issues by Priority
-    model: block_jira
+    model: block_jira_v2
     explore: issue
     type: looker_column
     fields: [issue.count, priority.name, issue_type.name]
@@ -289,7 +289,7 @@
     height: 8
   - title: Closed Issues by Type
     name: Closed Issues by Type
-    model: block_jira
+    model: block_jira_v2
     explore: issue
     type: looker_pie
     fields: [issue.number_of_closed_issues, issue_type.name]
@@ -338,7 +338,7 @@
     height: 8
   - title: Closed Issues by Priority
     name: Closed Issues by Priority (2)
-    model: block_jira
+    model: block_jira_v2
     explore: issue
     type: looker_bar
     fields: [issue.number_of_closed_issues, priority.name]
@@ -395,7 +395,7 @@
     ui_config:
       type: advanced
       display: popover
-    model: block_jira
+    model: block_jira_v2
     explore: issue
     listens_to_filters: []
     field: project.name
@@ -405,7 +405,7 @@
     default_value: ''
     allow_multiple_values: true
     required: false
-    model: block_jira
+    model: block_jira_v2
     explore: issue
     listens_to_filters: []
     field: worklog.first_update_time
@@ -415,7 +415,7 @@
     default_value: ''
     allow_multiple_values: true
     required: false
-    model: block_jira
+    model: block_jira_v2
     explore: issue
     listens_to_filters: []
     field: epic.name
@@ -425,7 +425,7 @@
     default_value: ''
     allow_multiple_values: true
     required: false
-    model: block_jira
+    model: block_jira_v2
     explore: issue
     listens_to_filters: []
     field: sprint.name

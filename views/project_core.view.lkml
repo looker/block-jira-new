@@ -1,12 +1,5 @@
-include: "//@{CONFIG_PROJECT_NAME}/project.view"
-
 view: project {
-  extends: [project_config]
-}
-
-view: project_core {
-  extension: required
-  sql_table_name: @{SCHEMA_NAME}.PROJECT ;;
+  sql_table_name: PROJECT ;;
 
   dimension: id {
     primary_key: yes

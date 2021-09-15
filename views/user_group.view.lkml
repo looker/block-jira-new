@@ -1,12 +1,5 @@
-include: "//@{CONFIG_PROJECT_NAME}/user_group.view"
-
 view: user_group {
-  extends: [user_group_config]
-}
-
-view: user_group_core {
-  extension: required
-  sql_table_name: @{SCHEMA_NAME}.USER_GROUP ;;
+  sql_table_name: USER_GROUP ;;
 
   dimension_group: _fivetran_synced {
     type: time

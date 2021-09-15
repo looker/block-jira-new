@@ -1,12 +1,5 @@
-include: "//@{CONFIG_PROJECT_NAME}/epic.view"
-
 view: epic {
-  extends: [epic_config]
-}
-
-view: epic_core {
-  extension: required
-  sql_table_name: @{SCHEMA_NAME}.EPIC ;;
+  sql_table_name: EPIC ;;
 
   dimension: id {
     primary_key: yes

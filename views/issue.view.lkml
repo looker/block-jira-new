@@ -1,12 +1,5 @@
-include: "//@{CONFIG_PROJECT_NAME}/issue.view"
-
 view: issue {
-  extends: [issue_config]
-}
-
-view: issue_core {
-  extension: required
-  sql_table_name: @{SCHEMA_NAME}.ISSUE ;;
+  sql_table_name:ISSUE ;;
 
   dimension: id {
     primary_key: yes

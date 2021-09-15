@@ -1,12 +1,5 @@
-include: "//@{CONFIG_PROJECT_NAME}/version.view"
-
 view: version {
-  extends: [version_config]
-}
-
-view: version_core {
-  extension: required
-  sql_table_name: @{SCHEMA_NAME}.VERSION ;;
+  sql_table_name: VERSION ;;
 
   dimension: id {
     primary_key: yes

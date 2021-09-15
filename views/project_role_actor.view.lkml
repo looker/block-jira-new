@@ -1,12 +1,5 @@
-include: "//@{CONFIG_PROJECT_NAME}/project_role_actor.view"
-
-view: project_role_actor {
-  extends: [project_role_actor_config]
-}
-
 view: project_role_actor_core {
-  extension: required
-  sql_table_name: @{SCHEMA_NAME}.PROJECT_ROLE_ACTOR ;;
+  sql_table_name: PROJECT_ROLE_ACTOR ;;
 
   dimension: id {
     primary_key: yes

@@ -1,6 +1,6 @@
-explore: sprint_core {
-  extension: required
-  fields: [ALL_FIELDS*, -issue.issue_exclusion_set*]
+include: "/views/*view"
+
+explore: sprint {
 
   join: board {
     type: left_outer

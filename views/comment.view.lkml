@@ -1,12 +1,5 @@
-include: "//@{CONFIG_PROJECT_NAME}/comment.view"
-
 view: comment {
-  extends: [comment_config]
-}
-
-view: comment_core {
-  extension: required
-  sql_table_name: @{SCHEMA_NAME}.COMMENT ;;
+  sql_table_name: COMMENT ;;
 
   dimension: id {
     primary_key: yes

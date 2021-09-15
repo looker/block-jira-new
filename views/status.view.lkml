@@ -1,12 +1,5 @@
-include: "//@{CONFIG_PROJECT_NAME}/status.view"
-
 view: status {
-  extends: [status_config]
-}
-
-view: status_core {
-  extension: required
-  sql_table_name: @{SCHEMA_NAME}.STATUS ;;
+  sql_table_name: STATUS ;;
 
   dimension: id {
     primary_key: yes

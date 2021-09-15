@@ -1,5 +1,6 @@
-explore: epic_core {
-  extension: required
+include: "/views/*.view"
+
+explore: epic {
   join: board {
     type: left_outer
     sql_on: ${epic.board_id} = ${board.id} ;;

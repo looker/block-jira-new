@@ -14,25 +14,15 @@
     "SCHEMA_NAME": {
       "label": "Schema Name"
     },
-    "CONFIG_PROJECT_NAME": {
-      "label": "Config Project Name"
-    },
     "COMPANY_DOMAIN": {
       "label": "Company Domain"
     }
   },
   "models": [
     {
-      "name": "block_jira",
+      "name": "block_jira_v2",
       "connection_constant": "CONNECTION_NAME"
     }
-  ],
-  "auxiliary_projects": [
-    {
-      "git_uri": "git://github.com/looker/block-jira-config.git",
-      "git_ref": "43bcc678263f974626beeda878b11ebefdc25229",
-      "label": "Jira Config",
-      "constant_name": "CONFIG_PROJECT_NAME"
-    }
   ]
+
 }

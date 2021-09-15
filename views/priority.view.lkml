@@ -1,12 +1,5 @@
-include: "//@{CONFIG_PROJECT_NAME}/priority.view"
-
 view: priority {
-  extends: [priority_config]
-}
-
-view: priority_core {
-  extension: required
-  sql_table_name: @{SCHEMA_NAME}.PRIORITY ;;
+  sql_table_name: PRIORITY ;;
 
   dimension: id {
     primary_key: yes

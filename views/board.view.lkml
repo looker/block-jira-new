@@ -1,12 +1,5 @@
-include: "//@{CONFIG_PROJECT_NAME}/status_category.view"
-
-view: status_category {
-  extends: [status_category_config]
-}
-
-view: status_category_core {
-  extension: required
-  sql_table_name: @{SCHEMA_NAME}.STATUS_CATEGORY ;;
+view: board {
+  sql_table_name: BOARD ;;
 
   dimension: id {
     primary_key: yes
@@ -16,6 +9,7 @@ view: status_category_core {
 
   dimension_group: _fivetran_synced {
     type: time
+    hidden: yes
     timeframes: [
       raw,
       time,
@@ -33,8 +27,13 @@ view: status_category_core {
     sql: ${TABLE}.NAME ;;
   }
 
+  dimension: type {
+    type: string
+    sql: ${TABLE}.TYPE ;;
+  }
+
   measure: count {
     type: count
-    drill_fields: [id, name, status.count]
+    drill_fields: [id, name, sprint.count]
   }
 }

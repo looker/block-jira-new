@@ -1,3 +1,5 @@
+include: "/views/*view"
+
 explore: project_core {
   extension: required
 

@@ -1,24 +1,17 @@
-include: "//@{CONFIG_PROJECT_NAME}/issue_board.view"
-
-view: issue_board {
-  extends: [issue_board_config]
-}
-
-view: issue_board_core {
-  extension: required
-  sql_table_name: @{SCHEMA_NAME}.ISSUE_BOARD ;;
+view: project_board {
+  sql_table_name: PROJECT_BOARD ;;
 
   dimension: id {
     primary_key: yes
     type: number
     hidden: yes
-    sql: ${TABLE}.ISSUE_ID || ' ' || ${TABLE}.BOARD_ID  ;;
+    sql: ${TABLE}.PROJECT_ID || ' ' || ${TABLE}.BOARD_ID  ;;
   }
 
-  dimension: issue_id {
+  dimension: project_id {
     type: number
     hidden: yes
-    sql: ${TABLE}.ISSUE_ID ;;
+    sql: ${TABLE}.PROJECT_ID ;;
   }
 
   dimension: board_id {
@@ -29,6 +22,7 @@ view: issue_board_core {
 
   dimension_group: _fivetran_synced {
     type: time
+    hidden: yes
     timeframes: [
       raw,
       time,
@@ -44,6 +38,7 @@ view: issue_board_core {
 
   measure: count {
     type: count
+    hidden: yes
     drill_fields: [id, name, sprint.count]
   }
 }

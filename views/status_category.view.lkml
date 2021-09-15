@@ -1,12 +1,5 @@
-include: "//@{CONFIG_PROJECT_NAME}/field_option.view"
-
-view: field_option {
-  extends: [field_option_config]
-}
-
-view: field_option_core {
-  extension: required
-  sql_table_name: @{SCHEMA_NAME}.FIELD_OPTION ;;
+view: status_category {
+  sql_table_name: STATUS_CATEGORY ;;
 
   dimension: id {
     primary_key: yes
@@ -35,14 +28,6 @@ view: field_option_core {
 
   measure: count {
     type: count
-    drill_fields: [detail*]
-  }
-
-  # ----- Sets of fields for drilling ------
-  set: detail {
-    fields: [
-      id,
-      name,
-    ]
+    drill_fields: [id, name, status.count]
   }
 }

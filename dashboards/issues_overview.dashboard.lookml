@@ -5,7 +5,7 @@
   elements:
   - title: Open Issues
     name: Open Issues
-    model: block_jira
+    model: block_jira_v2
     explore: issue
     type: single_value
     fields: [issue.count]
@@ -32,7 +32,7 @@
     height: 3
   - title: Resolved Bugs
     name: Resolved Bugs
-    model: block_jira
+    model: block_jira_v2
     explore: issue
     type: single_value
     fields: [issue.count]
@@ -61,7 +61,7 @@
     height: 3
   - title: Most Commented Open Issues
     name: Most Commented Open Issues
-    model: block_jira
+    model: block_jira_v2
     explore: issue
     type: looker_bar
     fields: [issue.key, comment.count, priority.name]
@@ -137,7 +137,7 @@
     height: 7
   - title: Issues by Status
     name: Issues by Status
-    model: block_jira
+    model: block_jira_v2
     explore: issue
     type: looker_column
     fields: [issue.count, status.name, issue_type.name]
@@ -214,7 +214,7 @@
     height: 9
   - title: Open Bugs
     name: Open Bugs
-    model: block_jira
+    model: block_jira_v2
     explore: issue
     type: looker_grid
     fields: [issue.key, priority.name, worklog.started_date, sprint.name, sla.remaining_time,
@@ -261,7 +261,7 @@
     height: 5
   - title: Open Bugs Approaching SLA
     name: Open Bugs Approaching SLA
-    model: block_jira
+    model: block_jira_v2
     explore: issue
     type: looker_grid
     fields: [issue.key, priority.name, worklog.started_date, user.name, status.name,
@@ -349,7 +349,7 @@
     height: 7
   - title: Open Bugs by Priority
     name: Open Bugs by Priority
-    model: block_jira
+    model: block_jira_v2
     explore: issue
     type: looker_bar
     fields: [priority.name, issue.number_of_open_issues]
@@ -411,7 +411,7 @@
     height: 7
   - title: Total Time Spend
     name: Total Time Spend
-    model: block_jira
+    model: block_jira_v2
     explore: issue
     type: single_value
     fields: [worklog.total_minutes_spent]
@@ -438,7 +438,7 @@
     height: 3
   - title: Bugs Needing Triage
     name: Bugs Needing Triage
-    model: block_jira
+    model: block_jira_v2
     explore: issue
     type: looker_grid
     fields: [issue.key, priority.name, status.name, sla.elapsed_time, worklog.started_date,
@@ -535,7 +535,7 @@
     ui_config:
       type: advanced
       display: popover
-    model: block_jira
+    model: block_jira_v2
     explore: issue
     listens_to_filters: []
     field: project.name
@@ -545,7 +545,7 @@
     default_value: ''
     allow_multiple_values: true
     required: false
-    model: block_jira
+    model: block_jira_v2
     explore: issue
     listens_to_filters: []
     field: epic.name
@@ -555,7 +555,7 @@
     default_value: ''
     allow_multiple_values: true
     required: false
-    model: block_jira
+    model: block_jira_v2
     explore: issue
     listens_to_filters: []
     field: worklog.first_update_time

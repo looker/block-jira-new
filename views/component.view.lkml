@@ -1,12 +1,5 @@
-include: "//@{CONFIG_PROJECT_NAME}/issue_type.view"
-
-view: issue_type {
-  extends: [issue_type_config]
-}
-
-view: issue_type_core {
-  extension: required
-  sql_table_name: @{SCHEMA_NAME}.ISSUE_TYPE ;;
+view: component_core {
+  sql_table_name: COMPONENT ;;
 
   dimension: id {
     primary_key: yes
@@ -16,7 +9,6 @@ view: issue_type_core {
 
   dimension_group: _fivetran_synced {
     type: time
-    hidden:  yes
     timeframes: [
       raw,
       time,
@@ -39,18 +31,14 @@ view: issue_type_core {
     sql: ${TABLE}.NAME ;;
   }
 
-  dimension: subtask {
-    type: yesno
-    sql: ${TABLE}.SUBTASK ;;
-  }
-
-  dimension: is_bug {
-    type: yesno
-    sql: ${name} = 'Bug' ;;
+  dimension: project_id {
+    type: number
+    # hidden: yes
+    sql: ${TABLE}.PROJECT_ID ;;
   }
 
   measure: count {
     type: count
-    drill_fields: [id, name]
+    drill_fields: [id, name, project.id, project.name]
   }
 }

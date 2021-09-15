@@ -5,7 +5,7 @@
   elements:
   - title: Status
     name: Status
-    model: block_jira
+    model: block_jira_v2
     explore: epic
     type: single_value
     fields: [epic.done]
@@ -26,7 +26,7 @@
     height: 3
   - title: Name
     name: Name
-    model: block_jira
+    model: block_jira_v2
     explore: epic
     type: single_value
     fields: [epic.name]
@@ -51,7 +51,7 @@
     height: 3
   - title: Key
     name: Key
-    model: block_jira
+    model: block_jira_v2
     explore: epic
     type: single_value
     fields: [epic.key]
@@ -76,7 +76,7 @@
     height: 3
   - title: Issues by Status and Priority
     name: Issues by Status and Priority
-    model: block_jira
+    model: block_jira_v2
     explore: epic
     type: looker_donut_multiples
     fields: [priority.name, status_category.name, issue.count]
@@ -132,7 +132,7 @@
     height: 9
   - title: Issues by Status and Type
     name: Issues by Status and Type
-    model: block_jira
+    model: block_jira_v2
     explore: epic
     type: looker_bar
     fields: [issue.count, status_category.name, issue_type.name]
@@ -189,7 +189,7 @@
     height: 9
   - title: In Progress Issues
     name: In Progress Issues
-    model: block_jira
+    model: block_jira_v2
     explore: epic
     type: looker_grid
     fields: [issue.key, priority.name, issue.self, sprint.name, sla.remaining_time]
@@ -234,7 +234,7 @@
     height: 7
   - title: Resolved Issues
     name: Resolved Issues
-    model: block_jira
+    model: block_jira_v2
     explore: epic
     type: looker_grid
     fields: [issue.key, priority.name, issue.self, sprint.name, sla.remaining_time]
@@ -279,7 +279,7 @@
     height: 7
   - title: Number of Issues
     name: Number of Issues
-    model: block_jira
+    model: block_jira_v2
     explore: epic
     type: single_value
     fields: [issue.count]
@@ -303,7 +303,7 @@
     height: 3
   - title: Total Minutes Spent
     name: Total Minutes Spent
-    model: block_jira
+    model: block_jira_v2
     explore: epic
     type: single_value
     fields: [worklog.total_minutes_spent]
@@ -363,7 +363,7 @@
     ui_config:
       type: advanced
       display: popover
-    model: block_jira
+    model: block_jira_v2
     explore: epic
     listens_to_filters: []
     field: epic.name

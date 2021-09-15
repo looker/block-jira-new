@@ -1,12 +1,5 @@
-include: "//@{CONFIG_PROJECT_NAME}/sla.view"
-
 view: sla {
-  extends: [sla_config]
-}
-
-view: sla_core {
-  extension: required
-  sql_table_name: @{SCHEMA_NAME}.SLA ;;
+  sql_table_name: SLA ;;
 
   dimension: sla_id {
     type: number

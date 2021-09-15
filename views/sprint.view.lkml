@@ -1,12 +1,5 @@
-include: "//@{CONFIG_PROJECT_NAME}/sprint.view"
-
 view: sprint {
-  extends: [sprint_config]
-}
-
-view: sprint_core {
-  extension: required
-  sql_table_name: @{SCHEMA_NAME}.SPRINT ;;
+  sql_table_name: SPRINT ;;
 
   dimension: id {
     primary_key: yes

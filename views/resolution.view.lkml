@@ -1,12 +1,5 @@
-include: "//@{CONFIG_PROJECT_NAME}/resolution.view"
-
 view: resolution {
-  extends: [resolution_config]
-}
-
-view: resolution_core {
-  extension: required
-  sql_table_name: @{SCHEMA_NAME}.RESOLUTION ;;
+  sql_table_name: RESOLUTION ;;
 
   dimension: id {
     primary_key: yes

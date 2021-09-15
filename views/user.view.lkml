@@ -1,12 +1,5 @@
-include: "//@{CONFIG_PROJECT_NAME}/user.view"
-
 view: user {
-  extends: [user_config]
-}
-
-view: user_core {
-  extension: required
-  sql_table_name: @{SCHEMA_NAME}.USER ;;
+  sql_table_name: USER ;;
 
   dimension: id {
     primary_key: yes
