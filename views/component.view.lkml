@@ -1,4 +1,4 @@
-view: component_core {
+view: component {
   sql_table_name: COMPONENT ;;
 
   dimension: id {

@@ -1,4 +1,4 @@
-view: issue_type{
+view: issue_type {
   sql_table_name: ISSUE_TYPE ;;
 
   dimension: id {

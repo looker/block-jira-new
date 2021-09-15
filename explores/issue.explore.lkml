@@ -1,5 +1,6 @@
-explore: issue_core {
-  extension: required
+include: "/views/*.view"
+
+explore: issue {
 
   join: issue_board {
     fields: []

@@ -1,7 +1,6 @@
 include: "/views/*view"
 
-explore: project_core {
-  extension: required
+explore: project {
 
   join: project_category {
     type:  left_outer

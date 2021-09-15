@@ -1,4 +1,4 @@
-view: project_role_actor_core {
+view: project_role_actor {
   sql_table_name: PROJECT_ROLE_ACTOR ;;
 
   dimension: id {
