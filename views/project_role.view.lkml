@@ -1,5 +1,5 @@
 view: project_role {
-  sql_table_name: PROJECT_ROLE ;;
+  sql_table_name: @{SCHEMA_NAME}.PROJECT_ROLE ;;
 
   dimension: id {
     primary_key: yes

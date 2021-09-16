@@ -1,5 +1,5 @@
 view: field_option {
-  sql_table_name: FIELD_OPTION ;;
+  sql_table_name: @{SCHEMA_NAME}.FIELD_OPTION ;;
 
   dimension: id {
     primary_key: yes

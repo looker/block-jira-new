@@ -1,5 +1,5 @@
 view: priority {
-  sql_table_name: PRIORITY ;;
+  sql_table_name: @{SCHEMA_NAME}.PRIORITY ;;
 
   dimension: id {
     primary_key: yes

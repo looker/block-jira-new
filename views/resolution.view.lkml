@@ -1,5 +1,5 @@
 view: resolution {
-  sql_table_name: RESOLUTION ;;
+  sql_table_name: @{SCHEMA_NAME}.RESOLUTION ;;
 
   dimension: id {
     primary_key: yes

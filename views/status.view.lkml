@@ -1,5 +1,5 @@
 view: status {
-  sql_table_name: STATUS ;;
+  sql_table_name: @{SCHEMA_NAME}.STATUS ;;
 
   dimension: id {
     primary_key: yes
