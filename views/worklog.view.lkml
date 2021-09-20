@@ -1,5 +1,5 @@
 view: worklog {
-  sql_table_name: WORKLOG ;;
+  sql_table_name: @{SCHEMA_NAME}.WORKLOG ;;
 
   dimension: id {
     primary_key: yes

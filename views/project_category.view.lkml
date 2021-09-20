@@ -1,5 +1,5 @@
 view: project_category {
-  sql_table_name: PROJECT_CATEGORY ;;
+  sql_table_name: @{SCHEMA_NAME}.PROJECT_CATEGORY ;;
 
   dimension: id {
     primary_key: yes

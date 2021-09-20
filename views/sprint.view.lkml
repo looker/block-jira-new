@@ -1,5 +1,5 @@
 view: sprint {
-  sql_table_name: SPRINT ;;
+  sql_table_name: @{SCHEMA_NAME}.SPRINT ;;
 
   dimension: id {
     primary_key: yes
