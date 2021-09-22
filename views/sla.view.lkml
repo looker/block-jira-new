@@ -1,5 +1,5 @@
 view: sla {
-  sql_table_name: @{SCHEMA_NAME}.SLA ;;
+  sql_table_name: @{SCHEMA_NAME}.sla ;;
 
   dimension: sla_id {
     type: number

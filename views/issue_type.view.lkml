@@ -1,5 +1,5 @@
 view: issue_type {
-  sql_table_name: @{SCHEMA_NAME}.ISSUE_TYPE ;;
+  sql_table_name: @{SCHEMA_NAME}.issue_type ;;
 
   dimension: id {
     primary_key: yes

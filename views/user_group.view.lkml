@@ -1,5 +1,5 @@
 view: user_group {
-  sql_table_name: @{SCHEMA_NAME}.USER_GROUP ;;
+  sql_table_name: @{SCHEMA_NAME}.user_group ;;
 
   dimension_group: _fivetran_synced {
     type: time
