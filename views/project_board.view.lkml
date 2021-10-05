@@ -1,5 +1,5 @@
 view: project_board {
-  sql_table_name: @{SCHEMA_NAME}.PROJECT_BOARD ;;
+  sql_table_name: @{SCHEMA_NAME}.project_board ;;
 
   dimension: id {
     primary_key: yes

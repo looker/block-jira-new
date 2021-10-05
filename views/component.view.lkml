@@ -1,5 +1,5 @@
 view: component {
-  sql_table_name: @{SCHEMA_NAME}.COMPONENT ;;
+  sql_table_name: @{SCHEMA_NAME}.component ;;
 
   dimension: id {
     primary_key: yes

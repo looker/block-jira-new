@@ -1,5 +1,5 @@
 view: project_role_actor {
-  sql_table_name: @{SCHEMA_NAME}.PROJECT_ROLE_ACTOR ;;
+  sql_table_name: @{SCHEMA_NAME}.project_role_actor ;;
 
   dimension: id {
     primary_key: yes

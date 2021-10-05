@@ -1,5 +1,5 @@
 view: status_category {
-  sql_table_name: @{SCHEMA_NAME}.STATUS_CATEGORY ;;
+  sql_table_name: @{SCHEMA_NAME}.status_category ;;
 
   dimension: id {
     primary_key: yes

@@ -1,5 +1,5 @@
 view: user {
-  sql_table_name: @{SCHEMA_NAME}.USER ;;
+  sql_table_name: @{SCHEMA_NAME}.user ;;
 
   dimension: id {
     primary_key: yes

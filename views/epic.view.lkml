@@ -1,5 +1,5 @@
 view: epic {
-  sql_table_name: @{SCHEMA_NAME}.EPIC ;;
+  sql_table_name: @{SCHEMA_NAME}.epic ;;
 
   dimension: id {
     primary_key: yes

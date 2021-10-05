@@ -1,5 +1,5 @@
 view: comment {
-  sql_table_name: @{SCHEMA_NAME}.COMMENT ;;
+  sql_table_name: @{SCHEMA_NAME}.comment ;;
 
   dimension: id {
     primary_key: yes

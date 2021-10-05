@@ -1,5 +1,5 @@
 view: version {
-  sql_table_name: @{SCHEMA_NAME}.VERSION ;;
+  sql_table_name: @{SCHEMA_NAME}.version ;;
 
   dimension: id {
     primary_key: yes
