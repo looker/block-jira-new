@@ -15,7 +15,7 @@ explore: issue {
   }
   join: epic {
     type: left_outer
-    sql_on:  ${board.id} = ${epic.board_id} ;;
+    sql_on:  ${issue.epic_link} = ${epic.id} ;;
     relationship: one_to_many
   }
   join: project_board {
