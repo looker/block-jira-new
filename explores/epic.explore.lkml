@@ -1,20 +1,20 @@
 include: "/views/*.view"
 
 explore: epic {
-  join: board {
+  join: issue {
     type: left_outer
-    sql_on: ${epic.board_id} = ${board.id} ;;
+    sql_on: ${epic.id} = ${issue.epic_link} ;;
     relationship: one_to_many
   }
   join: issue_board {
     fields: []
     type: left_outer
-    sql_on: ${board.id} = ${issue_board.board_id};;
+    sql_on: ${issue.id} = ${issue_board.issue_id};;
     relationship: one_to_many
   }
-  join: issue {
+  join: board {
     type: left_outer
-    sql_on: ${issue_board.issue_id} = ${issue.id} ;;
+    sql_on: ${issue_board.board_id} = ${board.id} ;;
     relationship: one_to_many
   }
   join:  issue_type {
